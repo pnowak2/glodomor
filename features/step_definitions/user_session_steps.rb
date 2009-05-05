@@ -1,20 +1,21 @@
-Given /^the following user_sessions:$/ do |user_sessions|
-  UserSession.create!(user_sessions.hashes)
+Given /^no user (.+)$/ do |login|
+  lambda{ User.find(login) }.should raise_error(ActiveRecord::RecordNotFound)
 end
 
-When /^I delete the (\d+)(?:st|nd|rd|th) user_session$/ do |pos|
-  visit user_sessions_url
-  within("table > tr:nth-child(#{pos.to_i+1})") do
-    click_link "Destroy"
-  end
+When /^I create a new user "(.+)" with password "(.+)"$/ do |login, password|
+  visit new_user_path
+  fill_in "user_login", :with => login
+  fill_in "user_email", :with => "#{login}@test.org"
+  fill_in "user_password", :with => password
+  fill_in "user_password_confirmation", :with => password
+  click_button "Register"
 end
 
-Then /^I should see the following user_sessions:$/ do |user_sessions|
-  user_sessions.rows.each_with_index do |row, i|
-    row.each_with_index do |cell, j|
-      response.should have_selector("table > tr:nth-child(#{i+2}) > td:nth-child(#{j+1})") { |td|
-        td.inner_text.should == cell
-      }
-    end
-  end
+Then /^the user "(.+)" can log in with password "(.+)"$/ do |login, password|
+  visit logout_path
+  fill_in "user_session_login", :with => login
+  fill_in "user_session_password", :with => password
+  click_button "Login"
+  response.should contain("Login successful!")
 end
+

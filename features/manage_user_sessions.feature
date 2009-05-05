@@ -3,11 +3,8 @@ Feature: Manage user_sessions
   [stakeholder]
   wants [behaviour]
   
-  Scenario: Register new user_session
-    Given I am on the new user_session page
-    When I fill in "Login" with "login 1"
-    And I fill in "Password" with "password 1"
-    And I press "Login"
-    Then I should see "login 1"
-    And I should see "password 1"
-    
+  Scenario: Create a new user account
+    Given no user "joetest"
+    When I create a new user "joetest" with password "skymonkey"
+    Then the user "joetest" can log in with password "skymonkey"
+

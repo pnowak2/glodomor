@@ -2,6 +2,8 @@
 %html
   %head
   %body
+    =flash[:notice]
+    %br
     =link_to "Register", new_user_path if !current_user
     =link_to "Logout", user_session_path, :method => :delete if current_user
     =yield
