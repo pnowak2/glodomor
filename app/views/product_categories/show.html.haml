@@ -5,7 +5,7 @@
 Products:
 %ul
   - @product_category.products.each do |p|
-    %li= p.name
+    %li= link_to p.name, p
 
 = link_to 'Edit', edit_product_category_path(@product_category)
 |

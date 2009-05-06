@@ -4,15 +4,15 @@
   %body
     =flash[:notice]
     %br
+    =link_to "Products", products_path 
+    |
+    =link_to "Product categories", product_categories_path
+    |
     - if(!current_user)
       =link_to "Register", new_user_path
       |
       =link_to "Login", login_path
       -else
-      =link_to "Products", products_path 
-      |
-      =link_to "Product categories", product_categories_path
-      |
       =link_to "Logout", logout_path 
 
     =yield
