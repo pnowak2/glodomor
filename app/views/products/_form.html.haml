@@ -12,3 +12,8 @@
 %br
 = form.text_field :description
 %br
+= form.label :product_category
+%br
+= form. select ("product_category_id", @product_categories.map {|u| [u.name,u.id]})
+%br
+%br

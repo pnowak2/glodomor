@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_filter :require_user, :except => [:show, :index]
+
   # GET /products
   # GET /products.xml
   def index
@@ -25,6 +27,7 @@ class ProductsController < ApplicationController
   # GET /products/new.xml
   def new
     @product = Product.new
+    @product_categories = ProductCategory.find(:all)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +38,7 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    @product_categories = ProductCategory.find(:all)
   end
 
   # POST /products
