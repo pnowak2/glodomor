@@ -11,11 +11,19 @@ When /^I create a new user "(.+)" with password "(.+)"$/ do |login, password|
   click_button "Register"
 end
 
-Then /^the user "(.+)" can log in with password "(.+)"$/ do |login, password|
+Then /^the user "(.*)" can log in with password "(.*)"$/ do |login, password|
+  login_using_form("Login successful!", login, password)
+end
+
+Then /^the user "(.*)" cannot log in with password "(.*)"$/ do |login, password|
+  login_using_form("Couldn't log you in!", login, password)
+end
+
+
+def login_using_form(expectation, login='', password='')
   visit logout_path
   fill_in "user_session_login", :with => login
   fill_in "user_session_password", :with => password
   click_button "Login"
-  response.should contain("Login successful!")
+  response.should contain(expectation)
 end
-
