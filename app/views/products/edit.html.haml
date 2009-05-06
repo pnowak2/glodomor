@@ -1,0 +1,12 @@
+%h1 Editing product
+
+- form_for @product do |f|
+  = f.error_messages
+  = render :partial => "form", :object => f
+  = f.submit "update"
+    
+%br
+
+= link_to 'Show', @product
+c|
+= link_to 'Back', products_path 

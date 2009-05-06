@@ -1,0 +1,15 @@
+%p
+  %b Neme:
+  =h @product.name
+
+%p
+  %b Description:
+  =h @product.description 
+   
+%p
+  %b Price:
+  =h @product.price
+
+= link_to 'Edit', edit_product_path(@product)
+|
+= link_to 'Back', products_path

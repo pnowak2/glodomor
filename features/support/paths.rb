@@ -10,6 +10,9 @@ module NavigationHelpers
     
     when /the homepage/
       '/'
+    when /the new manage_products page/
+      new_manage_products_path
+
     when /the new user_session page/
       new_user_session_path
 
