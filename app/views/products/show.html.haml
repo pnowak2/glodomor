@@ -1,5 +1,5 @@
 %p
-  %b Neme:
+  %b Name:
   =h @product.name
 
 %p
@@ -12,7 +12,7 @@
 
 %p
   %b Product category:
-  =h @product.product_category
+  = link_to @product.product_category, @product.product_category
   
 = link_to 'Edit', edit_product_path(@product)
 |

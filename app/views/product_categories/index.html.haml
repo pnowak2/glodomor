@@ -3,13 +3,14 @@
 %table
   %tr
     %th Name
-    %th Products
 
   - @product_categories.each do |product_category|
     %tr
-      %td= h product_category.name
-      %td= h product_category.products.size
-      %td= link_to 'Show', product_category
+      %td
+        %b= link_to product_category, product_category
+        %ul
+          - product_category.products.each do |p|
+            %li= link_to p, p
       %td= link_to 'Edit', edit_product_category_path(product_category) 
       %td= link_to 'Destroy', product_category, :confirm => 'Are you sure?', :method => :delete 
 
