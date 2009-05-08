@@ -11,5 +11,5 @@
 %p
   Total quantity:
   =cart.total_quantity
-=button_to "Checkout", :controller => 'store', :action => 'checkout_confirm'
+=button_to "Checkout", {:controller => 'store', :action => 'checkout_confirm'}, :method => :get
 =button_to "Empty cart", :controller => 'store', :action => 'empty_cart'

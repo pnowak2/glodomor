@@ -1,23 +1,26 @@
 %h1 Checkout
 
-%table
-  %tr
-    %th Name
-    %th Price
-    %th Quantity
-    - @cart.items.each do |i|
-      %tr
-        %td= i.title
-        %td= i.price
-        %td
-          =text_field_tag :test, i.quantity
+- form_tag('/store/update_cart_quantities', :method => :post) do
+  %table
     %tr
-      %td
-        %b Total:  
-      %td
-        %b= @cart.total_price
-      %td
-        %b= @cart.total_quantity
+      %th Name
+      %th Price
+      %th Quantity
+      - @cart.items.each do |i|
+        %tr
+          %td= i.title
+          %td= i.price
+          %td
+            =text_field_tag "cart_items[#{i.product_id}]", i.quantity
+      %tr
+        %td
+          %b Total:  
+        %td
+          %b= @cart.total_price
+        %td
+          %b= @cart.total_quantity
+  =submit_tag "Update"
+
 
 =button_to "Checkout", :action => 'checkout'    
 

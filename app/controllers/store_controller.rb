@@ -8,6 +8,9 @@ class StoreController < ApplicationController
     @products = Product.all
   end
 
+  def checkout_confirm
+  end
+    
   def add_to_cart
     begin
       product = Product.find(params[:id])
@@ -33,5 +36,23 @@ class StoreController < ApplicationController
     session[:cart] = nil
     flash[:notice] = "Your cart is empty now"
     redirect_to :action => :index
+  end
+  
+  def update_cart_quantities
+    items = params[:cart_items]
+    @cart = find_cart
+    items.each do |k, v|
+      item = @cart.items.find{|i| i.product_id == k.to_i}
+      if(item)
+        if(v.to_i > 0)
+          item.quantity = v.to_i
+        else
+          @cart.items.delete(item)
+        end
+        
+      end
+    end
+
+    render :action => 'checkout_confirm'
   end
 end
