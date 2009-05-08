@@ -25,18 +25,11 @@ class StoreController < ApplicationController
       redirect_to :action => :index
     end
   end
-  
-  def remove_from_cart
-    product_id = params[:id]
-    @cart = find_cart
-    @cart.remove_product(product_id.to_i)
-    redirect_to :action => :index
-  end
 
   def empty_cart
     session[:cart] = nil
     flash[:notice] = "Your cart is empty now"
-    redirect_to :action => :index
+    redirect_to :action => :checkout_confirm
   end
   
   def update_cart_quantities
@@ -53,7 +46,8 @@ class StoreController < ApplicationController
         
       end 
     end if items
-
+    
+    flash[:notice] = "Your cart has been updated"
     render :action => 'checkout_confirm'
   end
 end

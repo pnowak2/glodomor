@@ -9,17 +9,19 @@
       - @cart.items.each do |i|
         %tr
           %td= i.title
-          %td= i.price
+          %td= number_to_currency(i.price)
           %td
             =text_field_tag "cart_items[#{i.product_id}]", i.quantity
       %tr
         %td
           %b Total:  
         %td
-          %b= @cart.total_price
+          %b= number_to_currency(@cart.total_price)
         %td
           %b= @cart.total_quantity
   =submit_tag "Update" unless @cart.is_empty?
 
-=button_to "Checkout", :action => 'checkout' unless @cart.is_empty?   
+=button_to "Empty cart", :controller => 'store', :action => 'empty_cart'
+=button_to "Checkout", :action => 'checkout' unless @cart.is_empty?
+   
 
