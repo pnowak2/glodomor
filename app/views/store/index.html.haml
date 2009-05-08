@@ -1,0 +1,7 @@
+%h1 Store
+
+%ul
+  - @products.each do |p|
+    %li
+      ="#{p.name}, #{number_to_currency(p.price)}"
+      =button_to "Add to cart", :action => "add_to_cart", :id => p

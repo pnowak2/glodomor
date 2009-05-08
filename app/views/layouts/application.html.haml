@@ -8,6 +8,8 @@
 
     =flash[:notice]
     %br
+    =link_to "Store", store_path
+    |
     =link_to "Products", products_path 
     |
     =link_to "Product categories", product_categories_path
@@ -23,3 +25,15 @@
       =link_to "Logout", logout_path 
 
     =yield
+
+    %h2 Your cart:
+    %ul
+      - @cart.items.each do |i|
+        %li= "#{i.title}, #{i.quantity} item(s), #{number_to_currency(i.price)}"
+    %p
+      Total price:
+      =number_to_currency(@cart.total_price)
+    %p
+      Total quantity:
+      =@cart.total_quantity
+    =button_to "Empty cart", :controller => 'store', :action => 'empty_cart'
