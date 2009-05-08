@@ -16,6 +16,13 @@ class StoreController < ApplicationController
       redirect_to :action => :index
     end
   end
+  
+  def remove_from_cart
+    product_id = params[:id]
+    @cart = find_cart
+    @cart.remove_product(product_id.to_i)
+    redirect_to :action => :index
+  end
 
   def empty_cart
     session[:cart] = nil

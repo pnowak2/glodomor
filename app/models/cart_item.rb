@@ -12,7 +12,10 @@ class CartItem
   def increment_quantity
     @quantity += 1
   end
-
+  
+  def decrement_quantity
+    @quantity -= 1 if @quantity > 0
+  end
   def price
     @price * @quantity
   end
