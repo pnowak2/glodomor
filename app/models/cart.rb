@@ -6,11 +6,11 @@ class Cart
   end
 
   def add_product(product)
-    item = @items.find {|i| i.product == product}
+    item = @items.find {|i| i.product_id == product.id}
     if(item)
       item.increment_quantity
     else
-      @items << CartItem.new(product)
+      @items << CartItem.new(product.id, product.name, product.price)
     end
   end
 
