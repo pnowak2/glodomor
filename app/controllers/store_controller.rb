@@ -1,7 +1,7 @@
 class StoreController < ApplicationController
   before_filter :require_user, :only => [:checkout]
   
-  verify :method => :post, :only => [:add_to_cart, :empty_cart]
+  verify :method => :post, :only => [:add_to_cart, :empty_cart, :update_cart_quantities]
   verify :method => :delete, :only => [:remove_from_cart]
 
   def index
@@ -41,7 +41,7 @@ class StoreController < ApplicationController
   def update_cart_quantities
     items = params[:cart_items]
     @cart = find_cart
-    items.each do |k, v|
+    items.each do |k, v| 
       item = @cart.items.find{|i| i.product_id == k.to_i}
       if(item)
         if(v.to_i > 0)
@@ -50,8 +50,8 @@ class StoreController < ApplicationController
           @cart.items.delete(item)
         end
         
-      end
-    end
+      end 
+    end if items
 
     render :action => 'checkout_confirm'
   end

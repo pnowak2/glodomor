@@ -19,8 +19,7 @@
           %b= @cart.total_price
         %td
           %b= @cart.total_quantity
-  =submit_tag "Update"
+  =submit_tag "Update" unless @cart.is_empty?
 
-
-=button_to "Checkout", :action => 'checkout'    
+=button_to "Checkout", :action => 'checkout' unless @cart.is_empty?   
 
