@@ -1,5 +1,6 @@
 class StoreController < ApplicationController
-
+  before_filter :require_user, :only => [:checkout]
+  
   verify :method => :post, :only => [:add_to_cart, :empty_cart]
   verify :method => :delete, :only => [:remove_from_cart]
 
