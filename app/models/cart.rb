@@ -33,4 +33,8 @@ class Cart
   def total_quantity
     @items.sum {|i| i.quantity}
   end
+  
+  def is_empty?
+    @items.size <=0
+  end
 end

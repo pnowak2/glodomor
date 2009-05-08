@@ -1,0 +1,15 @@
+%h2 Your cart:
+%ul
+  - cart.items.each do |i|
+    %li 
+      ="#{link_to(i.title, product_path(i.product_id))}, #{i.quantity} item(s), #{number_to_currency(i.price)} - #{i.product_id}"
+      =button_to "Remove from cart", {:controller=> 'store', :action => 'remove_from_cart', :id => i.product_id}, :method => :delete
+
+%p
+  Total price:
+  =number_to_currency(cart.total_price)
+%p
+  Total quantity:
+  =cart.total_quantity
+=button_to "Checkout", :controller => 'store', :action => 'checkout_confirm'
+=button_to "Empty cart", :controller => 'store', :action => 'empty_cart'

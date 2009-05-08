@@ -1,0 +1,23 @@
+%h1 Checkout
+
+%table
+  %tr
+    %th Name
+    %th Price
+    %th Quantity
+    - @cart.items.each do |i|
+      %tr
+        %td= i.title
+        %td= i.price
+        %td
+          =text_field_tag :test, i.quantity
+    %tr
+      %td
+        %b Total:  
+      %td
+        %b= @cart.total_price
+      %td
+        %b= @cart.total_quantity
+
+=button_to "Checkout", :action => 'checkout'    
+
