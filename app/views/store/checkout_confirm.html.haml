@@ -21,7 +21,7 @@
           %b= @cart.total_quantity
   =submit_tag "Update" unless @cart.is_empty?
 
-=button_to "Empty cart", :controller => 'store', :action => 'empty_cart'
+=button_to "Empty cart", :controller => 'store', :action => 'empty_cart' unless @cart.is_empty?
 =button_to "Checkout", :action => 'checkout' unless @cart.is_empty?
    
 
