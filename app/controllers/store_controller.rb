@@ -9,6 +9,7 @@ class StoreController < ApplicationController
   end
 
   def checkout_confirm
+    flash[:notice] = "Your cart is empty" if @cart.is_empty?
   end
     
   def add_to_cart
