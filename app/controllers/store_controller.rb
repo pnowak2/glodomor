@@ -1,4 +1,8 @@
 class StoreController < ApplicationController
+
+  verify :method => :post, :only => [:add_to_cart, :empty_cart]
+  verify :method => :delete, :only => [:remove_from_cart]
+
   def index
     @products = Product.all
   end
