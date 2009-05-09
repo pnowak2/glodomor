@@ -7,6 +7,12 @@
 %br
 = form.text_field :email
 %br
+- if current_user && current_user.is_admin?
+  %br
+  = form.label :role
+  %br
+  = form.select (:role, User.ROLES)
+  %br
 %br
 = form.label :password, form.object.new_record? ? nil : "Change password"
 %br

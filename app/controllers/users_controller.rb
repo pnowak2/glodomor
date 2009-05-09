@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(params[:user])
+    @user = User.new(params[:user].reject{|k,v| k == 'role'})
     if @user.save
       flash[:notice] = "Account registered!"
       redirect_back_or_default account_url
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   
   def update
     @user = @current_user # makes our views "cleaner" and more consistent
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(params[:user].reject{|k,v| k == 'role' unless current_user.is_admin? })
       flash[:notice] = "Account updated!"
       redirect_to account_url
     else

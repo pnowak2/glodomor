@@ -25,11 +25,25 @@ class ApplicationController < ActionController::Base
     end
     
     def require_user
+      do_require_user
+    end
+    
+    def require_user_admin
+      do_require_user('admin')
+    end
+    
+    def do_require_user(role=nil)
       unless current_user
         store_location
         flash[:notice] = "You must be logged in to access this page"
         redirect_to new_user_session_url
         return false
+      else
+        if(role && role != current_user.role)
+          store_location
+          flash[:notice] = "You must be logged as #{role}"
+          redirect_to root_path
+        end
       end
     end
  
