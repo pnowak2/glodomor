@@ -1,6 +1,16 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
+  before_filter :require_user_admin, :only => [:index]
+  before_filter :validate_user, :only => [:edit, :update, :destroy]
+  
+  def validate_user
+    user_id = params[:id]
+    if(user_id.to_i != current_user.id && !current_user.is_admin?)
+      flash[:notice] = "You can't modify not Your profile"
+      redirect_to root_path
+    end
+  end
   
   def index
     @users = User.all
@@ -14,26 +24,26 @@ class UsersController < ApplicationController
     @user = User.new(params[:user].reject{|k,v| k == 'role'})
     if @user.save
       flash[:notice] = "Account registered!"
-      redirect_back_or_default account_url
+      redirect_back_or_default user_path(@user)
     else
       render :action => :new
     end
   end
   
   def show
-    @user = @current_user
+    @user = User.find(params[:id])
   end
  
   def edit
-    @user = @current_user
+    @user = User.find(params[:id])
   end
   
   def update
-    @user = @current_user # makes our views "cleaner" and more consistent
+    @user = User.find(params[:id])
     
     if @user.update_attributes(params[:user].reject{|k,v| k == 'role' unless current_user.is_admin? })
       flash[:notice] = "Account updated!"
-      redirect_to account_url
+      redirect_to user_path(@user)
     else
       render :action => :edit
     end

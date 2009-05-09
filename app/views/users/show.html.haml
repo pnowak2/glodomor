@@ -2,6 +2,9 @@
   %b Login:
   =h @user.login 
 %p
+  %b Email:
+  =h @user.email 
+%p
   %b Role:
   =h @user.role
 %p
@@ -28,4 +31,4 @@
   %b Current login ip:
   =h @user.current_login_ip
  
-= link_to 'Edit', edit_account_path
+= link_to 'Edit', edit_user_path(@user)

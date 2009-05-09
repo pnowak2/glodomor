@@ -1,10 +1,10 @@
 %h1 Edit My Account
 
-- form_for @user, :url => account_path do |f|
+- form_for @user do |f|
   = f.error_messages
   = render :partial => "form", :object => f
   = f.submit "update"
     
 %br
-=link_to "My Profile", account_path      
+=link_to "My Profile", user_path(@user)     
 

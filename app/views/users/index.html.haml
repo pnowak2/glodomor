@@ -5,13 +5,22 @@
     %th login
     %th email
     %th role
+    %th last request at
+    %th last login at
+    %th last login ip
+    %th current login ip
 
   - @users.each do |u|
     %tr
       %td= h u.login
       %td= h u.email
       %td= h u.role
-
+      %td= h u.last_request_at
+      %td= h u.last_login_at
+      %td= h u.last_login_ip
+      %td= h u.current_login_ip
+      %td= link_to "Edit", edit_user_path(u)
+      %td= link_to "Show", user_path(u)
 %br
 
 = link_to 'New user', new_user_path
