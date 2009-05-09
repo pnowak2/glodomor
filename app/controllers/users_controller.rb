@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
   
+  def index
+    @users = User.all
+  end
+  
   def new
     @user = User.new
   end
@@ -26,6 +30,7 @@ class UsersController < ApplicationController
   
   def update
     @user = @current_user # makes our views "cleaner" and more consistent
+    
     if @user.update_attributes(params[:user].reject{|k,v| k == 'role' unless current_user.is_admin? })
       flash[:notice] = "Account updated!"
       redirect_to account_url
