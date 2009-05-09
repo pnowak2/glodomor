@@ -9,10 +9,11 @@
     =flash[:notice]
     %br
     =link_to "Store", store_path
-    |
-    =link_to "Products", products_path 
-    |
-    =link_to "Product categories", product_categories_path
+    - if(current_user && current_user.is_admin?)
+      |
+      =link_to "Products", products_path 
+      |
+      =link_to "Product categories", product_categories_path
     |
     =link_to "Your cart", :controller => 'store', :action => 'checkout_confirm'
     |

@@ -5,7 +5,7 @@ class StoreController < ApplicationController
   verify :method => :delete, :only => [:remove_from_cart]
 
   def index
-    @products = Product.all
+    @product_categories = ProductCategory.all
   end
 
   def checkout_confirm

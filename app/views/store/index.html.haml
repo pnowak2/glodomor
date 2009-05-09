@@ -1,7 +1,11 @@
 %h1 Store
 
 %ul
-  - @products.each do |p|
+  - @product_categories.each do |c|
     %li
-      ="#{link_to(p.name, p)}, #{number_to_currency(p.price)} (#{p.id})"
-      =button_to "Add to cart", :action => "add_to_cart", :id => p
+      %h2= c.name
+      %ul
+        - c.products.each do |p|
+          %li
+            ="#{link_to(p.name, p)}, #{number_to_currency(p.price)} (#{p.id})"
+            =button_to "Add to cart", :action => "add_to_cart", :id => p
