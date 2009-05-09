@@ -11,6 +11,10 @@
   =h @product.price
 
 %p
+  %b Published
+  =h @product.published ? 'yes' : 'no'
+
+%p
   %b Product category:
   = link_to @product.product_category, @product.product_category
   

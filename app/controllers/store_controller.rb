@@ -20,7 +20,7 @@ class StoreController < ApplicationController
       flash[:notice] = "Invalid product"
     else
       @cart = find_cart
-      @cart.add_product(product)
+      @cart.add_product(product) if product.published
       flash[:notice] = "Your cart has been updated with #{product}"
       redirect_to :action => :index
     end

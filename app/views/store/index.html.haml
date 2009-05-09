@@ -5,7 +5,7 @@
     %li
       %h2= c.name
       %ul
-        - c.products.each do |p|
+        - c.products.published.each do |p|
           %li
             ="#{link_to(p.name, p)}, #{number_to_currency(p.price)} (#{p.id})"
             =button_to "Add to cart", :action => "add_to_cart", :id => p
