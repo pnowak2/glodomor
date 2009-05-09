@@ -1,11 +1,18 @@
-= form.label :login 
-%br
-= form.text_field :login
-%br
-%br
 = form.label :email
 %br
 = form.text_field :email
+%br
+= form.label :first_name
+%br
+= form.text_field :first_name
+%br
+= form.label :last_name
+%br
+= form.text_field :last_name
+%br
+= form.label :phone
+%br
+= form.text_field :phone
 %br
 - if current_user && current_user.is_admin?
   %br

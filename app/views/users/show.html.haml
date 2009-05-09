@@ -1,6 +1,9 @@
 %p
-  %b Login:
-  =h @user.login 
+  %b Name:
+  =h "#{@user.first_name} #{@user.last_name}"
+%p
+  %b Phone:
+  =h @user.phone
 %p
   %b Email:
   =h @user.email 

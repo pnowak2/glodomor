@@ -2,8 +2,8 @@
 
 %table
   %tr
-    %th login
-    %th email
+    %th name
+    %th phone    %th email
     %th role
     %th last request at
     %th last login at
@@ -12,7 +12,8 @@
 
   - @users.each do |u|
     %tr
-      %td= h u.login
+      %td= h "#{u.first_name} #{u.last_name}"
+      %td= h u.phone
       %td= h u.email
       %td= h u.role
       %td= h u.last_request_at
