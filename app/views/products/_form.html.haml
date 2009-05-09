@@ -16,5 +16,8 @@
 %br
 = form.select ("product_category_id", @product_categories.map {|u| [u.name,u.id]})
 %br
+= form.label :published
+%br
 = form.check_box :published
+%br
 %br
