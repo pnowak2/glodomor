@@ -1,5 +1,6 @@
 class ProductCategoriesController < ApplicationController
-  before_filter :require_user, :except => [:show, :index]
+  before_filter :require_user, :except => [:show]
+  
   # GET /product_categories
   # GET /product_categories.xml
   def index
