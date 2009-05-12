@@ -1,6 +1,6 @@
 %h1 Checkout
 
-- form_tag('/store/update_cart_quantities', :method => :post) do
+- form_tag('/store/update_cart', :method => :post) do
   %table
     %tr
       %th Name
@@ -20,9 +20,12 @@
         %td
           %b= number_to_currency(@cart.total_price)
           
-  =submit_tag "Update" unless @cart.is_empty?
+  =submit_tag t(:update), :name=>'submit' unless @cart.is_empty?
 
 =button_to "Empty cart", :controller => 'store', :action => 'empty_cart' unless @cart.is_empty?
-=button_to "Checkout", :action => 'checkout' unless @cart.is_empty?
-   
+
+- form_for @order, :url => '/store/checkout' do |f|
+  =f.label :test
+  =f.submit 'checkout'
+  
 

@@ -1,7 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
   map.root :controller => "store", :action => "index" # optional, this just sets the root route
-  map.resources :users, :product_categories, :products
-  map.resource :user_session  
+  map.resources :users, :product_categories, :products, :orders
+  map.resource :user_session
+  
   map.logout 'logout', :controller => "user_sessions", :action => "destroy" 
   map.login 'login', :controller => "user_sessions", :action => "new"
   map.store 'store', :controller => "store", :action => "index"

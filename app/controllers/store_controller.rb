@@ -1,6 +1,5 @@
 class StoreController < ApplicationController
-  before_filter :require_user, :only => [:checkout]
-  
+
   verify :method => :post, :only => [:add_to_cart, :empty_cart, :update_cart_quantities]
   verify :method => :delete, :only => [:remove_from_cart]
 
@@ -9,6 +8,7 @@ class StoreController < ApplicationController
   end
 
   def checkout_confirm
+    @order = Order.new
     flash[:notice] = "Your cart is empty" if @cart.is_empty?
   end
     
@@ -31,11 +31,12 @@ class StoreController < ApplicationController
     flash[:notice] = "Your cart is empty now"
     redirect_to :action => :checkout_confirm
   end
-  
-  def update_cart_quantities
+
+  def update_cart
     items = params[:cart_items]
+    @order = Order.new
     @cart = find_cart
-    items.each do |k, v| 
+    items.each do |k, v|
       item = @cart.items.find{|i| i.product_id == k.to_i}
       if(item)
         if(v.to_i > 0)
@@ -43,11 +44,27 @@ class StoreController < ApplicationController
         else
           @cart.items.delete(item)
         end
-        
-      end 
+
+      end
     end if items
-    
+
     flash[:notice] = "Your cart has been updated"
     render :action => 'checkout_confirm'
   end
+
+  def checkout
+    @cart = find_cart
+    @order = Order.new(params[:order])
+    @order.add_line_items_from_cart(@cart)
+    @order.user = current_user if current_user
+
+    if(@order.save)
+      flash[:notice] = "Your order have been completed"
+      session[:cart] = nil
+      redirect_to orders_path
+    else
+      render :action => 'checkout'
+    end
+  end
+
 end
