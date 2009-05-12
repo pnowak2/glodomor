@@ -63,7 +63,7 @@ class StoreController < ApplicationController
       session[:cart] = nil
       redirect_to orders_path
     else
-      render :action => 'checkout'
+      render :action => 'checkout_confirm'
     end
   end
 
