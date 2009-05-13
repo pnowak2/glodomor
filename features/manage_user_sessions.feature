@@ -5,9 +5,9 @@ Feature: Manage user_sessions
   
   Scenario: Create a new user account
     Given no user "joetest"
-    When I create a new user "joetest" with password "skymonkey"
-    Then the user "joetest" can log in with password "skymonkey"
+    When I create a new user "joetest@foo.com" with password "skymonkey"
+    Then the user "joetest@foo.com" can log in with password "skymonkey"
 
   Scenario: Cannot login without account
-    Given no user "joetest"
-    Then the user "joetest" cannot log in with password "skymonkey"
+    Given no user "joetest@foo.com"
+    Then the user "joetest@foo.com" cannot log in with password "skymonkey"
