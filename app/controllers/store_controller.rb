@@ -5,6 +5,8 @@ class StoreController < ApplicationController
 
   def index
     @product_categories = ProductCategory.all
+    @new_products = Product.recent.published
+
   end
 
   def checkout_confirm
