@@ -33,18 +33,17 @@ class StoreController < ApplicationController
   end
 
   def update_cart
-    items = params[:cart_items]
+    items = params[:cart_item]
     @order = Order.new
     @cart = find_cart
     items.each do |k, v|
       item = @cart.items.find{|i| i.product_id == k.to_i}
       if(item)
-        if(v.to_i > 0)
-          item.quantity = v.to_i
-        else
+        if(items[k][:quantity].to_i<=0 || items[k][:deleted])
           @cart.items.delete(item)
+        else
+          item.quantity = items[k][:quantity].to_i
         end
-
       end
     end if items
 
