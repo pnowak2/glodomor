@@ -1,12 +1,11 @@
 class StoreController < ApplicationController
-
-  verify :method => :post, :only => [:add_to_cart, :empty_cart, :update_cart_quantities]
+  verify :method => :post, :only => [:add_to_cart, :empty_cart, :update_cart_quantities, :checkout]
   verify :method => :delete, :only => [:remove_from_cart]
+
+  before_filter :validate_checkout, :only => [:checkout]
 
   def index
     @product_categories = ProductCategory.all
-    @new_products = Product.recent.published
-
   end
 
   def checkout_confirm
@@ -55,6 +54,7 @@ class StoreController < ApplicationController
 
   def checkout
     @cart = find_cart
+
     @order = Order.new(params[:order])
     @order.add_line_items_from_cart(@cart)
     @order.user = current_user if current_user
@@ -65,6 +65,20 @@ class StoreController < ApplicationController
       redirect_to orders_path
     else
       render :action => 'checkout_confirm'
+    end
+  end
+
+  private
+
+  def validate_checkout
+    if(find_cart.is_empty?)
+      flash[:notice] = "Your cart is empty"
+      redirect_to store_path
+    end
+    unless(current_user)
+      session[:return_to] = checkout_confirm_path
+      flash[:notice] = "Please login or register first, your cart will be saved"
+      redirect_to new_user_session_path
     end
   end
 

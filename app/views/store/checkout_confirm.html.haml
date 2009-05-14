@@ -26,11 +26,4 @@
 
 =button_to "Empty cart", :controller => 'store', :action => 'empty_cart' unless @cart.is_empty?
 
-%h1 Order details
-- form_for @order, :url => '/store/checkout' do |f|
-  =f.label 'Order time'
-  =f.text_field :order_time
-  %br
-  =f.submit 'checkout'
-  
-
+= render :partial => 'checkout', :locals => { :order => @order } unless @cart.is_empty?

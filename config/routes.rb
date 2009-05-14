@@ -6,6 +6,8 @@ ActionController::Routing::Routes.draw do |map|
   map.logout 'logout', :controller => "user_sessions", :action => "destroy" 
   map.login 'login', :controller => "user_sessions", :action => "new"
   map.store 'store', :controller => "store", :action => "index"
+  map.checkout_confirm 'checkout_confirm', :controller => "store", :action => "checkout_confirm"
+  map.my_orders 'my_orders', :controller => "orders", :action => "my_orders"
 
   # The priority is based upon order of creation: first created -> highest priority.
 

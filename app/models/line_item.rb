@@ -2,6 +2,9 @@ class LineItem < ActiveRecord::Base
   belongs_to :order
   belongs_to :product
 
+  named_scope :recent,
+              lambda {|*args| {:order => "id desc", :limit => 3, :group => :name } }
+
   def self.from_cart_item(cart_item)
     li = self.new
     li.name = cart_item.name
