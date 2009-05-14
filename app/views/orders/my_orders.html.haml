@@ -1,0 +1,9 @@
+%ul
+  - @orders.each do |o|
+    %li
+      %b
+        ORDER:
+        ="(#{o.order_time}, notes: #{o.note})"
+      %ul
+        - o.line_items.each do |li|
+          %li= "#{link_to(li.name, product_path(li.product_id))}, #{number_to_currency(li.price)}, #{li.quantity} item(s)"
