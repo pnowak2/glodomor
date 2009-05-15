@@ -14,6 +14,10 @@
 %br
 = form.text_field :phone
 %br
+= form.label :avatar
+%br
+= form.file_field :avatar
+%br
 - if current_user && current_user.is_admin?
   %br
   = form.label :role

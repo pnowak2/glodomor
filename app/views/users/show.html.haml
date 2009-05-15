@@ -1,4 +1,6 @@
 %p
+  = image_tag @user.avatar.url(:medium)
+%p
   %b Name:
   =h "#{@user.first_name} #{@user.last_name}"
 %p
