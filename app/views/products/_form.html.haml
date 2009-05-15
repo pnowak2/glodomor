@@ -21,6 +21,8 @@
 = form.check_box :published
 %br
 = form.label :photo
+%p
+  = image_tag @product.photo.url(:medium)
 %br
 = form.file_field :photo
 %br
