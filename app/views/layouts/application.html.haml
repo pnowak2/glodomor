@@ -18,7 +18,7 @@
       |
       =link_to "Product categories", product_categories_path
     |
-    =link_to "Your cart", :controller => 'store', :action => 'checkout_confirm'
+    =link_to "Your cart (#{@cart.total_quantity})", :controller => 'store', :action => 'checkout_confirm'
     |
     - if(!current_user)
       =link_to "Register", new_user_path

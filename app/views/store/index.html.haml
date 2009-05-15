@@ -32,4 +32,6 @@
 
 %ul
   - User.recently_logged.each do |u|
-    %li= link_to "#{u.first_name} #{u.last_name} (#{u.email})", user_path(u)
+    %li
+      =link_to "#{u.first_name} #{u.last_name} (#{u.email})", user_path(u)
+      =image_tag u.avatar.url(:thumb)

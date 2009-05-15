@@ -20,6 +20,10 @@
   %b Product category:
   = link_to @product.product_category, @product.product_category
   
+%br
+=button_to "Add to cart", :controller => "store", :action => "add_to_cart", :id => @product
+%br  
+  
 = link_to 'Edit', edit_product_path(@product)
 |
 = link_to 'Back', products_path
