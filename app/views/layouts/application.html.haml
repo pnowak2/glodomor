@@ -2,38 +2,211 @@
 %html{ :xmlns => "http://www.w3.org/1999/xhtml", :lang => "en", 'xml:lang' => "en" }
   %head
     %title Foo
-    %meta{ 'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8' }/
+    %meta{ 'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8' }
     = javascript_include_tag 'jquery-1.3.2.min', 'application', :cache => true
     = yield :javascript
-    = stylesheet_link_tag 'styles'
+    = stylesheet_link_tag 'style'
   %body
+    %div.content
+      %div.header
+        %div.top_info
+          %div.top_info_right
+            %p
+              %b You are not Logged in!
+              %a{:href=>'#'} Log in
+              to check your messages.
+              %br
+              Do you want to
+              %a{:href=>'#'} Log in
+              or
+              %a{:href=>'#'} register
+              ?
+          %div.top_info_left
+            %p
+              Today is:
+              %b 27th January, 2006
+              %br
+              Check todays
+              %a{:href=>'#'} hot topics
+              or
+              %a{:href=>'#'} new products
+        %div.logo
+          %h1
+            %a{:href=>'#', :title=>'Centralized Internet Content'} Bufet "Acha"
 
-    =flash[:notice]
+      %div.bar
+        %ul
+          %li.slogan Centralized Internet Content
+          %li
+            %a{:href => '#'} Internet
+          %li.active People
+          %li
+            %a{:href => '#'} Music
+          %li
+            %a{:href => '#'} Pictures
+          %li
+            %a{:href => '#'} Services
+          %li
+            %a{:href => '#'} Products
+      
+      %div.search_field
+        %form{:method => 'post', :action => '?'}
+          %p
+            %input.search{:type => 'text', :name => 'search'}
+            %input.searchSubmit{:type => 'submit', :value => 'Search'}
 
-    %br
-    =link_to "Store", store_path
-    - if(current_user && current_user.is_admin?)
-      |
-      =link_to "Products", products_path 
-      |
-      =link_to "Product categories", product_categories_path
-    |
-    =link_to "Your cart", :controller => 'store', :action => 'checkout_confirm'
-    |
-    - if(!current_user)
-      =link_to "Register", new_user_path
-      |
-      =link_to "Login", login_path
-      -else
-      =link_to "Users", users_path if current_user.is_admin?
-      |
-      =link_to "My orders", my_orders_path
-      =link_to "Orders", orders_path if current_user.is_admin?
-      |
-      Logged as 
-      =link_to "#{current_user.first_name} #{current_user.last_name}", current_user
-      |
-      =link_to "Logout", logout_path 
+      %div.subheader
+        %p
+          %a{:href => '#'} Lorem ipsum dolor
+          sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex.
 
-    =yield
-    =render :partial => 'cart/cart', :object => @cart unless @cart.is_empty?
+      %div.left
+        %div.left_articles
+          %h2
+            %a{:href => '#'} What's new ?
+          %p
+            %a{:href => '#'} Lorem ipsum dolor sit amet
+            , consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. <a href="#">Ut wisi enim ad minim veniam</a>, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex.
+          %p
+            %a{:href => '#'} Lorem ipsum dolor sit amet
+            , consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. <a href="#">Ut wisi enim ad minim veniam</a>, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex.
+
+        %div.left_links
+          %div.left_side
+            %p
+              %b
+                %img{:src=>'images/arrow.gif', :alt=>'>'}
+                %a.title{:href=>'#'}Arts
+              %br
+              %a{:href=>'#'} Music
+              ,
+              %a{:href=>'#'} Television
+              ,
+              %a{:href=>'#'} Movies
+              ="..."
+            %p
+              %b
+                %img{:src=>'images/arrow.gif', :alt=>'>'}
+                %a.title{:href=>'#'}Computers
+              %br
+              %a{:href=>'#'} Internet
+              ,
+              %a{:href=>'#'} Software
+              ,
+              %a{:href=>'#'} Hardware
+              ="..."
+            %p
+              %b
+                %img{:src=>'images/arrow.gif', :alt=>'>'}
+                %a.title{:href=>'#'}Shopping
+              %br
+              %a{:href=>'#'} Autos
+              ,
+              %a{:href=>'#'} Clothing
+              ,
+              %a{:href=>'#'} Gifts
+              ="..."
+          %div.right_side
+            %p
+              %b
+                %img{:src=>'images/arrow.gif', :alt=>'>'}
+                %a.title{:href=>'#'}Business
+              %br
+              %a{:href=>'#'} Jobs
+              ,
+              %a{:href=>'#'} Real estates
+              ,
+              %a{:href=>'#'} Investing
+              ="..."
+            %p
+              %b
+                %img{:src=>'images/arrow.gif', :alt=>'>'}
+                %a.title{:href=>'#'}Health
+              %br
+              %a{:href=>'#'} Fitness
+              ,
+              %a{:href=>'#'} Medicine
+              ,
+              %a{:href=>'#'} Alternative
+              ="..."
+            %p
+              %b
+                %img{:src=>'images/arrow.gif', :alt=>'>'}
+                %a.title{:href=>'#'}Sports
+              %br
+              %a{:href=>'#'} Baseball
+              ,
+              %a{:href=>'#'} Basketball
+              ,
+              %a{:href=>'#'} Soccer
+              ="..."
+          %p
+            %b
+              Want to
+              %a{:href=>'#'} suggest a category
+              ?
+
+        %div.left_message
+          %p
+            %b Lorem ipsum dolor
+            sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam <b>erat volutpat</b>. Ut wisi enim ad minim veniam, quis nostrud exerci.
+        %div.left_box
+          %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex.
+
+      %div.right
+        %div.right_login
+          %form{:method=>'post', :action=>'?'}
+            %p
+              Username:
+              %input.login{:type=>'text', :name=>'search'}
+              @email.com
+            %p
+              Password:
+              %input.login{:type=>'password', :name=>'search'}
+              %input.searchSubmit{:type=>'submit', :value=>'Login'}
+
+        %div.right_articles
+          %p
+            %img.image{:src=>'images/image.gif', :alt=>'Image', :title=>'Image'}
+            %b Lorem ipsum dolor sit amet
+            %br
+            consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam             
+            %a{:href=>'#'} erat volutpat
+            \. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
+
+        %div.right_articles
+          %p
+            %img.image{:src=>'images/image.gif', :alt=>'Image', :title=>'Image'}
+            %b Lorem ipsum dolor sit amet
+            %br
+            consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
+            %a{:href=>'#'} erat volutpat
+            \. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
+
+        %div.right_articles
+          %p
+            %img.image{:src=>'images/image.gif', :alt=>'Image', :title=>'Image'}
+            %b Lorem ipsum dolor sit amet
+            %br
+            consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
+            %a{:href=>'#'} erat volutpat
+            \. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
+
+      %div.footer
+        %p
+          %a{:href=>'#'} RSS Feed
+          |
+          %a{:href=>'#'} Contact
+          |
+          %a{:href=>'#'} Accessibility
+          |
+          %a{:href=>'#'} Products
+          |
+          %a{:href=>'#'} Disclaimer
+          |
+          %a{:href=>'#'} CSS
+          and
+          %a{:href=>'#'} HXTML
+          %br
+          &copy; Copyright 2006 Internet Center, Design: Luka Cvrk -
+          %a{:href=>"http://www.solucija.com/", :title=>"What's your solution?"} Solucija
