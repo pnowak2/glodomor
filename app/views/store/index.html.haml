@@ -8,6 +8,7 @@
         - c.products.published.each do |p|
           %li
             ="#{link_to(p.name, p)}, #{number_to_currency(p.price)} (#{p.id})"
+            = image_tag p.photo.url(:thumb)
             =button_to "Add to cart", :action => "add_to_cart", :id => p
 %h2 New products:
 
