@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
   belongs_to :product_category
   has_many :line_items
-  has_attached_file :photo, :styles => { :medium => "180x180", :thumb => "64x48>" }
+  has_attached_file :photo, :styles => { :medium => "150x150#", :thumb => "40x40#" }
     
   named_scope :published, :conditions => { :published => true }
   named_scope :recent,

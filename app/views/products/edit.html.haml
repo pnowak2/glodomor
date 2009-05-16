@@ -1,11 +1,12 @@
-%h1 Editing product
+%div.box
+  %h2 Editing product
 
-- form_for @product, :html => { :multipart => true } do |f|
-  = f.error_messages
-  = render :partial => "form", :object => f
-  = f.submit "update"
-    
-%br
+  - form_for @product, :html => { :multipart => true } do |f|
+    = f.error_messages
+    = render :partial => "form", :object => f
+    = f.submit "update"
+      
+  %br
 
 = link_to 'Show', @product
 |

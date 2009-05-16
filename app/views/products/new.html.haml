@@ -1,11 +1,12 @@
-%h1 New product
+%div.box
+  %h2 New product
 
-- form_for @product, :html => { :multipart => true } do |f|
-  = f.error_messages
-  = render :partial => "form", :object => f
-  = f.submit "Create"
+  - form_for @product, :html => { :multipart => true } do |f|
+    = f.error_messages
+    = render :partial => "form", :object => f
+    = f.submit "Create"
 
-= link_to 'Back', products_path
+  = link_to 'Back', products_path
 - content_for :subheader do
   %b New product 
   %br

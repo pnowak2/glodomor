@@ -118,21 +118,63 @@ input.login {
 
 /* layout
    ------ */
-.published {
-  background:transparent url(../images/comment-icon.gif) no-repeat scroll left center;
-  display:inline;
-  float:left;
-  height:16px;
-  line-height:16px;
-  margin:0;
-  padding:0 0 0 20px;
-  text-align:left;
-  width:73%;
-  color: #939393;
-  font-size: .92em;
+
+/* Menu */   
+div.menu {
+  width:100%;
+  margin: 0 auto;
+  font: 100% "Trebuchet MS",Arial,sans-serif;
+  text-align:left
 }
 
-div.box {
+div.menu a {
+  color: #555;
+  text-decoration: none;
+}
+
+div.menu h2 {
+  margin: .5em auto 0.3em;
+  font-size: 1.7em;
+  text-align:center
+}
+
+dl {
+  width: 89%;
+  overflow: auto;
+  margin: 0 0 .6em;
+  background: url(../images/dot.gif) repeat-x 0 1.2em
+}
+    
+dt,dd.price {
+  font-size: 130%;
+  font-weight: bold
+}
+
+dt {
+  float: left;
+  padding-right: 3px;
+  background-color: #fff;
+}
+
+dd {
+  margin:0
+}
+
+dd.price {
+  float: right;
+  padding-left: 3px;
+  color: #555
+}
+
+dd.ingredients {
+  float: left;
+  width: 100%;
+  padding: 1px 0;
+  color: #555
+}
+
+/* Menu end */
+   div.box {
   background: url(../images/form_background.gif) repeat-x scroll left top;
   padding: 10px 15px 15px 15px;
   border: 1px solid #dddddd;

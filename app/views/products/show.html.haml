@@ -1,32 +1,33 @@
-%div{:style=>'float: right;'}
-  = image_tag @product.photo.url(:medium)
-%p
-  %b Name:
-  =h @product.name
+%div.box
+  %div{:style=>'float: right;'}
+    = image_tag @product.photo.url(:medium)
+  %p
+    %b Name:
+    =h @product.name
 
-%p
-  %b Description:
-  =h @product.description 
-   
-%p
-  %b Price:
-  =h @product.price
+  %p
+    %b Description:
+    =h @product.description 
+     
+  %p
+    %b Price:
+    =h @product.price
 
-%p
-  %b Published
-  =h @product.published ? 'yes' : 'no'
+  %p
+    %b Published
+    =h @product.published ? 'yes' : 'no'
 
-%p
-  %b Product category:
-  = link_to @product.product_category, @product.product_category
-  
-%br
+  %p
+    %b Product category:
+    = link_to @product.product_category, @product.product_category
+    
+  %br
 
-=button_to "Add to cart", :controller => "store", :action => "add_to_cart", :id => @product
-or
-=link_to "Back to store", store_path
-%br  
-  
+  =button_to "Add to cart", :controller => "store", :action => "add_to_cart", :id => @product
+  or
+  =link_to "Back to store", store_path
+  %br  
+    
 = link_to 'Edit', edit_product_path(@product)
 |
 = link_to 'Back', products_path

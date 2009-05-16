@@ -1,28 +1,17 @@
 %div.box
-  %h2 News
-  %ul
-    - Message.recent.each do |m|
-      %li=link_to m.title, m
-
-%div.box
-  %h2 Store
-
-  %ul
+  %div.menu
     - @product_categories.each do |c|
-      %li
-        %h3= c.name
-        %ul
-          - c.products.published.each do |p|
-            %li
-              ="#{link_to(p.name, p)}, #{number_to_currency(p.price)} (#{p.id})"
-              = image_tag p.photo.url(:thumb)
-              =button_to "Add to cart", :action => "add_to_cart", :id => p
-              %p.published 
-                Comments (0) |
-                =link_to "add comment" 
-                
-              %br 
-              %br
+      %h2= c.name
+      - c.products.published.each do |p|
+    
+        %div{:style=>'float:left; padding-right: 5px; padding-bottom: 5px;'} 
+          =image_tag p.photo.url(:thumb)
+        %dl
+          %dt= link_to(p.name, p)
+          %dd.price= number_to_currency(p.price)
+          %dd.ingredients= p.description
+        %div.clearfix
+
   %h2 New products:
 
   %ul
