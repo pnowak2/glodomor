@@ -17,6 +17,12 @@
               ="#{link_to(p.name, p)}, #{number_to_currency(p.price)} (#{p.id})"
               = image_tag p.photo.url(:thumb)
               =button_to "Add to cart", :action => "add_to_cart", :id => p
+              %p.published 
+                Comments (0) |
+                =link_to "add comment" 
+                
+              %br 
+              %br
   %h2 New products:
 
   %ul
