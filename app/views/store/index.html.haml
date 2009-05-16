@@ -12,7 +12,7 @@
           %dd.ingredients= p.description
           %dd.comments 
             = image_tag '../images/speech-bubble-micro-icon.png', :class=>'comments_icon' 
-            =link_to "Comments (#{p.comments.size})"
+            =link_to "Comments (#{p.comments.size})", product_path(p)+"#comments"
             |
             = image_tag '../images/document-lines-micro-icon.png', :class=>'add_to_cart_icon'
             =link_to "Add to cart", {:controller => 'store', :action => 'add_to_cart', :id => p.id}, :method => :post
