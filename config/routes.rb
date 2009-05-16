@@ -1,8 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :comments
+
   map.resources :messages
 
   map.root :controller => "store", :action => "home"
-  map.resources :users, :product_categories, :products, :orders
+  map.resources :users, :product_categories, :products
+  map.resources :orders, :has_many => :comments
   map.resource :user_session
   
   map.logout 'logout', :controller => "user_sessions", :action => "destroy" 

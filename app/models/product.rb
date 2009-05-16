@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   belongs_to :product_category
   has_many :line_items
+  has_many :comments, :as => :commentable
   has_attached_file :photo, :styles => { :medium => "150x150#", :thumb => "40x40#" }
     
   named_scope :published, :conditions => { :published => true }

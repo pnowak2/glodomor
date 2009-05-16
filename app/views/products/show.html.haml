@@ -29,6 +29,17 @@
   =link_to "Back to store", store_path
   %br  
     
+%h2 Comments
+
+- @product.comments.each do |c|
+  %p= c.content  
+    
+- form_for(Comment.new) do |f|
+  = hidden_field_tag :product_id, @product.id
+  = f.text_area :content, :rows=>3    
+  %br
+  = f.submit "Add comment"
+    
 = link_to 'Edit', edit_product_path(@product)
 |
 = link_to 'Back', products_path
