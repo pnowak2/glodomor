@@ -37,7 +37,7 @@ a.title {
 h1 {
 	font: bold 2em Arial, Sans-Serif;
 	letter-spacing: -1px; 
-	padding: 7px 0 0 8px;
+	padding: 0 0 0 8px;
 	margin: 0;
 }
 
@@ -118,6 +118,11 @@ img.today_info_image {
 		border-bottom: 1px solid #9EC068;
 }
 
+.company_motto {
+  padding-left: 9px;
+	color: #246088;
+}
+
 .content { 
 	margin: 10px auto;
 	width: 760px; 
@@ -159,6 +164,13 @@ img.today_info_image {
 	margin: 0 0 0 0px; 
 }
 
+.bar .right_bar {
+  float: right;
+}
+
+.right_bar li a {
+  color: #454545;
+}
 	.bar li { 
 		margin: 0; 
 		padding: 4px 10px 8px 10px;
