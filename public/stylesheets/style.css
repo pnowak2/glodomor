@@ -177,7 +177,8 @@ dd.ingredients {
    div.box {
   background: url(../images/form_background.gif) repeat-x scroll left top;
   padding: 10px 15px 15px 15px;
-  border: 1px solid #dddddd;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
   margin-bottom: 10px;
 }
 
@@ -337,7 +338,7 @@ img.today_info_image {
 		border: 1px solid #eee;
 		padding: 10px 10px 10px 75px;	
 		margin: 0 0 10px 0;
-		background: #fff url(../images/questionmark.gif) no-repeat center left;
+		background: #fff url(../images/chef.jpg) no-repeat bottom left;
 		color: #454545; 
 	}
 	

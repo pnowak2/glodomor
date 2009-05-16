@@ -2,3 +2,7 @@
   %h1 Login
  
   =render :partial => 'login', :locals => { :user_session => @user_session }
+- content_for :subheader do
+  %b Login
+  %br
+  This page allows you to login
