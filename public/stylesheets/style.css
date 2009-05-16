@@ -142,7 +142,7 @@ dl {
   width: 89%;
   overflow: auto;
   margin: 0 0 .6em;
-  background: url(../images/dot.gif) repeat-x 0 1.2em
+  background: url(../images/dot.gif) repeat-x 0 1.5em
 }
     
 dt,dd.price {
@@ -153,6 +153,7 @@ dt,dd.price {
 dt {
   float: left;
   padding-right: 3px;
+  padding-top: 5px;
   background-color: #fff;
 }
 
@@ -163,6 +164,8 @@ dd {
 dd.price {
   float: right;
   padding-left: 3px;
+  padding-top: 5px;
+  background-color: #fff;
   color: #555
 }
 
