@@ -7,3 +7,8 @@
       %ul
         - o.line_items.each do |li|
           %li= "#{link_to(li.name, product_path(li.product_id))}, #{number_to_currency(li.price)}, #{li.quantity} item(s)"
+          
+- content_for :subheader do
+  %b My orders
+  %br
+  This page allows you to review Your orders

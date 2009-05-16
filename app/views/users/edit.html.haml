@@ -1,4 +1,4 @@
-%h1 Edit My Account
+%h1 Edit Account
 
 - form_for @user, :html => { :multipart => true } do |f|
   = f.error_messages
@@ -7,4 +7,7 @@
     
 %br
 =link_to "My Profile", user_path(@user)     
-
+- content_for :subheader do
+  %b User edit
+  %br
+  This page allows you to edit the user account

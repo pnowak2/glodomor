@@ -80,6 +80,13 @@ form {
 	margin: 0; 
 }
 
+input[type='text'], input[type='password'] {
+	width: 150px;
+	height: 16px;
+	border: none; 
+	background: url(../images/logininput.gif);
+	padding: 4px; }
+
 input.search { 
 	width: 199px; 
 	border: none;
@@ -208,7 +215,7 @@ img.today_info_image {
 	clear: both;
 	text-align: center; 
 	padding: 10px 0 5px 0;
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 }
 
 .subheader {
