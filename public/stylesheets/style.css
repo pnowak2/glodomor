@@ -12,11 +12,13 @@ body {
 	line-height: 1.5em;
 	background: #fff; 
 	color: #454545; 
+  background: url(../images/bg_body.gif) repeat-x scroll left top;
 }
 
 img {
   padding: 2px;
   border: 1px solid #cccccc;
+  background-color: #ffffff;
 }
 
 a {
@@ -82,6 +84,10 @@ form {
 	margin: 0; 
 }
 
+input[type='text'], input[type='password'], textarea {
+  color: #666666;
+}
+
 input[type='text'], input[type='password'] {
 	width: 150px;
 	height: 16px;
@@ -138,6 +144,7 @@ img.today_info_image {
   padding-top: 5px;
   padding-right: 10px;
   border: 0;
+  background-color: transparent;
 }
 
 .cart {
@@ -157,6 +164,7 @@ img.today_info_image {
 .content { 
 	margin: 10px auto;
 	width: 800px; 
+  padding: 10px;
 }
 
 .header { 
@@ -206,12 +214,11 @@ img.today_info_image {
 		margin: 0; 
 		padding: 4px 10px 8px 10px;
 		color: #808080;
-		background: #FFF;
 		float: left; 
 	}
 	
 	.bar li.active { 
-		background: #FFF url(../images/bar.gif) no-repeat center bottom;
+		background: url(../images/bar.gif) no-repeat center bottom;
 		color: #9EC068;
 		font-weight: bold; 
 		padding-bottom: 8px; 
