@@ -1,51 +1,52 @@
-%h1 Store
+%div.box
+  %h1 Store
 
-%h2 News
-%ul
-  - Message.recent.each do |m|
-    %li=link_to m.title, m
+  %h2 News
+  %ul
+    - Message.recent.each do |m|
+      %li=link_to m.title, m
 
-%ul
-  - @product_categories.each do |c|
-    %li
-      %h2= c.name
-      %ul
-        - c.products.published.each do |p|
-          %li
-            ="#{link_to(p.name, p)}, #{number_to_currency(p.price)} (#{p.id})"
-            = image_tag p.photo.url(:thumb)
-            =button_to "Add to cart", :action => "add_to_cart", :id => p
-%h2 New products:
+  %ul
+    - @product_categories.each do |c|
+      %li
+        %h2= c.name
+        %ul
+          - c.products.published.each do |p|
+            %li
+              ="#{link_to(p.name, p)}, #{number_to_currency(p.price)} (#{p.id})"
+              = image_tag p.photo.url(:thumb)
+              =button_to "Add to cart", :action => "add_to_cart", :id => p
+  %h2 New products:
 
-%ul
-  - Product.recent.published.each do |p|
-    %li
-      =link_to p.name, product_path(p)
-      =image_tag p.photo.url(:thumb)
+  %ul
+    - Product.recent.published.each do |p|
+      %li
+        =link_to p.name, product_path(p)
+        =image_tag p.photo.url(:thumb)
 
-%h2 Last registered items:
+  %h2 Last registered items:
 
-%ul
-  - LineItem.recent.each do |li|
-    %li= link_to li.name, product_path(li.product_id)
+  %ul
+    - LineItem.recent.each do |li|
+      %li= link_to li.name, product_path(li.product_id)
 
-%h2 Last registered users:
+  %h2 Last registered users:
 
-%ul
-  - User.recent.each do |u|
-    %li
-      =link_to "#{u.first_name} #{u.last_name} (#{u.email})", user_path(u)
-      =image_tag u.avatar.url(:thumb)
+  %ul
+    - User.recent.each do |u|
+      %li
+        =link_to "#{u.first_name} #{u.last_name} (#{u.email})", user_path(u)
+        =image_tag u.avatar.url(:thumb)
 
-%h2 Users recently logged in:
+  %h2 Users recently logged in:
 
-%ul
-  - User.recently_logged.each do |u|
-    %li
-      =link_to "#{u.first_name} #{u.last_name} (#{u.email})", user_path(u)
-      =image_tag u.avatar.url(:thumb)
-      
-=image_tag('/images/muppet chef.jpg')
+  %ul
+    - User.recently_logged.each do |u|
+      %li
+        =link_to "#{u.first_name} #{u.last_name} (#{u.email})", user_path(u)
+        =image_tag u.avatar.url(:thumb)
+        
+  =image_tag('/images/muppet chef.jpg')
 
 - content_for :subheader do
   %b Store

@@ -1,9 +1,10 @@
-%h1 Edit Account
+%div.box
+  %h1 Edit Account
 
-- form_for @user, :html => { :multipart => true } do |f|
-  = f.error_messages
-  = render :partial => "form", :object => f
-  = f.submit "update"
+  - form_for @user, :html => { :multipart => true } do |f|
+    = f.error_messages
+    = render :partial => "form", :object => f
+    = f.submit "update"
     
 %br
 =link_to "My Profile", user_path(@user)     

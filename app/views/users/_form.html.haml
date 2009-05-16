@@ -1,3 +1,5 @@
+%div{:style=>'float: right;'}
+  = image_tag @user.avatar.url(:medium)
 = form.label :email
 %br
 = form.text_field :email
@@ -15,8 +17,6 @@
 = form.text_field :phone
 %br
 = form.label :avatar
-%p
-  = image_tag @user.avatar.url(:medium)
 %br
 = form.file_field :avatar
 %br

@@ -20,13 +20,10 @@ img {
 }
 
 a {
-	color: #185DA0;
-	background: inherit;
-}
+	color: #185DA0;}
 
 a:hover {
 	color: #9EC068;
-	background: inherit;	
 }
 
 a.title {
@@ -46,9 +43,7 @@ h1 a, h2 a {
 }
 
 h1 a:hover, h2 a:hover {
-	color: #FF6600;
-	background: #FFF;
-}
+	color: #FF6600;}
 
 
 h2 { 
@@ -61,9 +56,7 @@ h2 {
 h2 { 
 	font-size: 16px;
 	margin-bottom: 5px; 
-	color: #000; 
-	background: inherit;
-}
+	color: #000; }
 
 p {	
 	margin: 0 0 5px 0;
@@ -83,26 +76,39 @@ form {
 input[type='text'], input[type='password'] {
 	width: 150px;
 	height: 16px;
-	border: none; 
-	background: url(../images/logininput.gif);
-	padding: 4px; }
+	border: 1px solid #888888; 
+	background: url(../images/inputBg.gif) no-repeat scroll left top;
+	padding: 2px; }
+
+textarea {
+	border: 1px solid #888888; 
+	background: url(../images/inputBg.gif) no-repeat scroll left top;
+	padding: 2px; 
+}
 
 input.search { 
 	width: 199px; 
-	border: none;
-	background: url(../images/input.gif);
-	padding: 4px; 
+	height: 16px;
+	border: 1px solid #888888; 
+	background: url(../images/inputBg.gif) no-repeat scroll left top;
+	padding: 2px; 
 }
 
 input.login { 
 	width: 150px;
-	border: none; 
-	background: url(../images/logininput.gif);
-	padding: 4px; 
+	border: 1px solid #888888; 
+	background: url(../images/inputBg.gif) no-repeat scroll left top;
+	padding: 2px; 
 }
 
 /* layout
    ------ */
+
+div.box {
+  background: url(../images/form_background.gif) repeat-x scroll left top;
+  padding: 15px;
+  border: 1px solid #dddddd;
+}
 
 .notify {
 		padding: 10px 10px 10px 40px;
@@ -203,9 +209,7 @@ img.today_info_image {
 
 	.bar a { 
 		font-weight: bold;
-		color: #4A8EBC; 
-		background: inherit;	
-	} 
+		color: #4A8EBC; 	} 
 
 .search_field { 
 	background: #DCF2B8 url(../images/barbg.gif) no-repeat;

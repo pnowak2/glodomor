@@ -1,23 +1,24 @@
-%h1 Listing users
+%div.box
+  %h1 Listing users
 
-%table
-  %tr
-    %th name
-    %th phone    %th email
-    %th role
-
-  - @users.each do |u|
+  %table
     %tr
-      %td= h "#{u.first_name} #{u.last_name}"
-      %td= h u.phone
-      %td= h u.email
-      %td= h u.role
-      %td= image_tag u.avatar.url(:thumb)
-      %td= link_to "Edit", edit_user_path(u)
-      %td= link_to "Show", user_path(u)
-%br
+      %th name
+      %th phone      %th email
+      %th role
 
-= link_to 'New user', new_user_path
+    - @users.each do |u|
+      %tr
+        %td= h "#{u.first_name} #{u.last_name}"
+        %td= h u.phone
+        %td= h u.email
+        %td= h u.role
+        %td= image_tag u.avatar.url(:thumb)
+        %td= link_to "Edit", edit_user_path(u)
+        %td= link_to "Show", user_path(u)
+  %br
+
+  = link_to 'New user', new_user_path
 - content_for :subheader do
   %b Users
   %br

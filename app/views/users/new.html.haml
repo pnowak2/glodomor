@@ -1,9 +1,10 @@
-%h1 New user
+%div.box
+  %h1 New user
 
-- form_for @user, :html => { :multipart => true } do |f|
-  = f.error_messages
-  = render :partial => "form", :object => f
-  = f.submit "Register"
+  - form_for @user, :html => { :multipart => true } do |f|
+    = f.error_messages
+    = render :partial => "form", :object => f
+    = f.submit "Register"
   - content_for :subheader do
   %b Register
   %br
