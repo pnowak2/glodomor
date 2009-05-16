@@ -27,3 +27,8 @@
 =button_to "Empty cart", :controller => 'store', :action => 'empty_cart' unless @cart.is_empty?
 
 = render :partial => 'checkout', :locals => { :order => @order } unless @cart.is_empty?
+
+- content_for :subheader do
+  %b Checkout
+  %br
+  This page allows you to make an order

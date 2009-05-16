@@ -61,20 +61,20 @@
             - else
               %li= link_to "Register", new_user_path
               
-              
-
-      
       %div.search_field
         %form{:method => 'post', :action => '?'}
           %p
             %input.search{:type => 'text', :name => 'search'}
             %input.searchSubmit{:type => 'submit', :value => 'Search'}
 
-      %div.subheader
-        %p
-          %a{:href => '#'} Lorem ipsum dolor
-          sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex.
-      =flash[:notice]
+      - if @content_for_subheader
+        %div.left_message
+          %p
+            =yield :subheader
+
+      - if(flash[:notice])
+        %div.notify= flash[:notice]
+      
       %div.left
           
         =yield

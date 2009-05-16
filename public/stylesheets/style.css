@@ -97,6 +97,14 @@ input.login {
 /* layout
    ------ */
 
+.notify {
+		padding: 10px 10px 10px 40px;
+		margin: 5px 0 10px 0;		color: #246088;
+		border-top: 1px solid #cccccc;
+		border-bottom: 1px solid #cccccc;
+		background: #F4F4F4 url(../images/Information_icon-sm.png) no-repeat scroll 7px 5px;
+}
+
 .avatar_thumb {
   float: left; 
   padding-right: 10px;
@@ -200,11 +208,12 @@ img.today_info_image {
 	clear: both;
 	text-align: center; 
 	padding: 10px 0 5px 0;
+	margin-bottom: 5px;
 }
 
 .subheader {
 	margin: 3px 0 10px 0;
-	padding: 8px;
+	padding: 5px 8px 3px 8px;
 	background: #f4f4f4 url(../images/subheaderbg.gif) no-repeat;
 	color: #808080;
 	border-bottom: 1px solid #ccc;

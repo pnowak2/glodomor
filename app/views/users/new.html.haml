@@ -4,4 +4,7 @@
   = f.error_messages
   = render :partial => "form", :object => f
   = f.submit "Register"
-  
+  - content_for :subheader do
+  %b Register
+  %br
+  This page allows you to register

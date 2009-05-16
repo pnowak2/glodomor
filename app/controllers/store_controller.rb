@@ -23,7 +23,7 @@ class StoreController < ApplicationController
       @cart = find_cart
       @cart.add_product(product) if product.published
       flash[:notice] = "Your cart has been updated with #{product}"
-      redirect_to :action => :index
+      redirect_to checkout_confirm_path
     end
   end
 
@@ -62,7 +62,7 @@ class StoreController < ApplicationController
     if(@order.save)
       flash[:notice] = "Your order have been completed"
       session[:cart] = nil
-      redirect_to orders_path
+      redirect_to my_orders_path
     else
       render :action => 'checkout_confirm'
     end
