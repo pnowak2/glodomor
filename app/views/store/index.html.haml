@@ -5,11 +5,17 @@
       - c.products.published.each do |p|
     
         %div{:style=>'float:left; padding-right: 5px; padding-bottom: 5px;'} 
-          =image_tag p.photo.url(:thumb)
+          =link_to (image_tag(p.photo.url(:thumb)), p)
         %dl
           %dt= link_to(p.name, p)
           %dd.price= number_to_currency(p.price)
           %dd.ingredients= p.description
+          %dd.comments 
+            = image_tag '../images/speech-bubble-micro-icon.png', :class=>'comments_icon' 
+            =link_to "Comments (0)"
+            |
+            = image_tag '../images/document-lines-micro-icon.png', :class=>'add_to_cart_icon'
+            =link_to "Add to cart", {:controller => 'store', :action => 'add_to_cart', :id => p.id}, :method => :post
         %div.clearfix
 
   %h2 New products:

@@ -142,18 +142,17 @@ dl {
   width: 89%;
   overflow: auto;
   margin: 0 0 .6em;
-  background: url(../images/dot.gif) repeat-x 0 1.5em
+  background: url(../images/dot.gif) repeat-x 0 1.2em
 }
     
 dt,dd.price {
-  font-size: 130%;
+  font-size: 120%;
   font-weight: bold
 }
 
 dt {
   float: left;
   padding-right: 3px;
-  padding-top: 5px;
   background-color: #fff;
 }
 
@@ -164,7 +163,6 @@ dd {
 dd.price {
   float: right;
   padding-left: 3px;
-  padding-top: 5px;
   background-color: #fff;
   color: #555
 }
@@ -172,11 +170,37 @@ dd.price {
 dd.ingredients {
   float: left;
   width: 100%;
-  padding: 1px 0;
+  padding: 0px 0;
   color: #555
 }
 
+dd.comments  {
+  float: left;
+  width: 100%;
+}
+
+dd.comments, dd.comments a {
+  font-size: .9em;
+  color: #aaa;
+}
+
+dd.comments a {
+  text-decoration: underline;
+}
+
+dd.comments img.comments_icon {
+  float: left;
+}
+
+dd.comments img.comments_icon, dd.comments img.add_to_cart_icon {
+  padding: 0 5px 0 0; 
+  border: 0;
+}
 /* Menu end */
+  
+div.item_image {
+  float: right;
+}  
    div.box {
   background: url(../images/form_background.gif) repeat-x scroll left top;
   padding: 10px 15px 15px 15px;
