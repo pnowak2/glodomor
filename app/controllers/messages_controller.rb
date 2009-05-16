@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_filter :require_user_admin, :except => [:show]
+  before_filter :require_user_admin, :except => [:show, :index]
   
   # GET /messages
   # GET /messages.xml

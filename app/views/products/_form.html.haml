@@ -1,3 +1,5 @@
+%div{:style=>'float:right;'}
+  = image_tag @product.photo.url(:medium)
 = form.label :name 
 %br
 = form.text_field :name
@@ -21,8 +23,6 @@
 = form.check_box :published
 %br
 = form.label :photo
-%p
-  = image_tag @product.photo.url(:medium)
 %br
 = form.file_field :photo
 %br

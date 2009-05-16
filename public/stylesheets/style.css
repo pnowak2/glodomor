@@ -34,8 +34,12 @@ a.title {
 h1 {
 	font: bold 2em Arial, Sans-Serif;
 	letter-spacing: -1px; 
-	padding: 0 0 0 8px;
+	padding: 0 0 0 0px;
 	margin: 0;
+}
+
+h1, h2, h3 {
+	color: #454545;
 }
 
 h1 a, h2 a {
@@ -53,10 +57,15 @@ h2 {
 	letter-spacing: -1px;
 }
 
+h3 {
+	margin: 0; 
+	padding: 0; 
+	letter-spacing: -1px;
+}
+
 h2 { 
 	font-size: 16px;
-	margin-bottom: 5px; 
-	color: #000; }
+	margin-bottom: 5px; }
 
 p {	
 	margin: 0 0 5px 0;
@@ -106,8 +115,9 @@ input.login {
 
 div.box {
   background: url(../images/form_background.gif) repeat-x scroll left top;
-  padding: 15px;
+  padding: 10px 15px 15px 15px;
   border: 1px solid #dddddd;
+  margin-bottom: 10px;
 }
 
 .notify {
@@ -140,13 +150,13 @@ img.today_info_image {
 }
 
 .company_motto {
-  padding-left: 9px;
+  padding-left: 2px;
 	color: #246088;
 }
 
 .content { 
 	margin: 10px auto;
-	width: 760px; 
+	width: 800px; 
 }
 
 .header { 
@@ -235,7 +245,7 @@ img.today_info_image {
 
 .left {
 	float: left;
-	width: 485px;
+	width: 529px;
 	margin: 0 0 10px 0;
 }
 	.left_articles {

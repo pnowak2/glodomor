@@ -1,15 +1,16 @@
 %div.box
-  %h1 Store
-
   %h2 News
   %ul
     - Message.recent.each do |m|
       %li=link_to m.title, m
 
+%div.box
+  %h2 Store
+
   %ul
     - @product_categories.each do |c|
       %li
-        %h2= c.name
+        %h3= c.name
         %ul
           - c.products.published.each do |p|
             %li
