@@ -1,19 +1,17 @@
 class CommentsController < ApplicationController
 
-  def index
-    @commentable = find_commentable
-    @comments = @commentable.comments
-  end
+  before_filter :require_user
 
   def create
     @commentable = find_commentable
     @comment = @commentable.comments.build(params[:comment]) if @commentable
+    @comment.user = current_user if current_user
     if @commentable && @comment.save
       flash[:notice] = "Successfully created comment."
-      redirect_to :controller => @commentable.class.name.pluralize, :action=> 'show', :id => @commentable.id
+      redirect_to params[:return_to]
     else
       flash[:notice] = "Couldn't create comment for that product"
-      redirect_to root_path
+      redirect_to params[:return_to]
     end
   end
 

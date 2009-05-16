@@ -3,7 +3,8 @@ class StoreController < ApplicationController
   verify :method => :delete, :only => [:remove_from_cart]
 
   before_filter :validate_checkout, :only => [:checkout]
-
+  before_filter :require_user, :only => [:checkout]
+  
   def index
     @product_categories = ProductCategory.all
   end
@@ -77,11 +78,6 @@ class StoreController < ApplicationController
     if(find_cart.is_empty?)
       flash[:notice] = "Your cart is empty"
       redirect_to store_path
-    end
-    unless(current_user)
-      session[:return_to] = checkout_confirm_path
-      flash[:notice] = "Please login or register first, your cart will be saved"
-      redirect_to new_user_session_path
     end
   end
 

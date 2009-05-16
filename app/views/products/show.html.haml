@@ -32,10 +32,13 @@
 %h2 Comments
 
 - @product.comments.each do |c|
-  %p= c.content  
+  %p
+    = c.content
+    =link_to("(#{c.user})", c.user) if c.user
     
 - form_for(Comment.new) do |f|
   = hidden_field_tag :product_id, @product.id
+  = hidden_field_tag :return_to, request.request_uri
   = f.text_area :content, :rows=>3    
   %br
   = f.submit "Add comment"
