@@ -41,15 +41,12 @@
 
       %div.bar
         %ul
-          %li.active Home
-          %li
-            =link_to "Store", store_path          %li
+          %li= link_to "Home", home_path
+          %li= link_to "Store", store_path          %li
             =link_to "My cart", :controller => 'store', :action => 'checkout_confirm'
             ="(#{@cart.total_quantity})"
-          - if current_user            %li
-              =link_to "My orders", my_orders_path     
-            %li
-              = link_to "My profile", user_path(current_user)
+          - if current_user            %li= link_to "My orders", my_orders_path     
+            %li= link_to "My profile", user_path(current_user)
 
           %ul.right_bar
             - if current_user    
@@ -78,98 +75,6 @@
       %div.left
           
         =yield
-        %div.left_articles
-          %h2
-            %a{:href => '#'} What's new ?
-          %p
-            %a{:href => '#'} Lorem ipsum dolor sit amet
-            , consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. <a href="#">Ut wisi enim ad minim veniam</a>, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex.
-          %p
-            %a{:href => '#'} Lorem ipsum dolor sit amet
-            , consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. <a href="#">Ut wisi enim ad minim veniam</a>, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex.
-
-        %div.left_links
-          %div.left_side
-            %p
-              %b
-                %img{:src=>'images/arrow.gif', :alt=>'>'}
-                %a.title{:href=>'#'}Arts
-              %br
-              %a{:href=>'#'} Music
-              ,
-              %a{:href=>'#'} Television
-              ,
-              %a{:href=>'#'} Movies
-              ="..."
-            %p
-              %b
-                %img{:src=>'images/arrow.gif', :alt=>'>'}
-                %a.title{:href=>'#'}Computers
-              %br
-              %a{:href=>'#'} Internet
-              ,
-              %a{:href=>'#'} Software
-              ,
-              %a{:href=>'#'} Hardware
-              ="..."
-            %p
-              %b
-                %img{:src=>'images/arrow.gif', :alt=>'>'}
-                %a.title{:href=>'#'}Shopping
-              %br
-              %a{:href=>'#'} Autos
-              ,
-              %a{:href=>'#'} Clothing
-              ,
-              %a{:href=>'#'} Gifts
-              ="..."
-          %div.right_side       
-            %p
-              %b
-                %img{:src=>'images/arrow.gif', :alt=>'>'}
-                %a.title{:href=>'#'}Business
-              %br
-              %a{:href=>'#'} Jobs
-              ,
-              %a{:href=>'#'} Real estates
-              ,
-              %a{:href=>'#'} Investing
-              ="..."
-            %p
-              %b
-                %img{:src=>'images/arrow.gif', :alt=>'>'}
-                %a.title{:href=>'#'}Health
-              %br
-              %a{:href=>'#'} Fitness
-              ,
-              %a{:href=>'#'} Medicine
-              ,
-              %a{:href=>'#'} Alternative
-              ="..."
-            %p
-              %b
-                %img{:src=>'images/arrow.gif', :alt=>'>'}
-                %a.title{:href=>'#'}Sports
-              %br
-              %a{:href=>'#'} Baseball
-              ,
-              %a{:href=>'#'} Basketball
-              ,
-              %a{:href=>'#'} Soccer
-              ="..."
-          %div.clearfix    
-          %p
-            %b
-              Want to
-            %a{:href=>'#'} suggest a category
-            ?
-
-        %div.left_message
-          %p
-            %b Lorem ipsum dolor
-            sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam <b>erat volutpat</b>. Ut wisi enim ad minim veniam, quis nostrud exerci.
-        %div.left_box
-          %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex.
 
       %div.right
         - unless @cart.is_empty?

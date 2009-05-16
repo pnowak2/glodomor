@@ -1,13 +1,14 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :messages
 
-  map.root :controller => "store", :action => "index" # optional, this just sets the root route
+  map.root :controller => "store", :action => "home"
   map.resources :users, :product_categories, :products, :orders
   map.resource :user_session
   
   map.logout 'logout', :controller => "user_sessions", :action => "destroy" 
   map.login 'login', :controller => "user_sessions", :action => "new"
   map.store 'store', :controller => "store", :action => "index"
+  map.home 'home', :controller => "store", :action => "home"
   map.checkout_confirm 'checkout_confirm', :controller => "store", :action => "checkout_confirm"
   map.my_orders 'my_orders', :controller => "orders", :action => "my_orders"
 

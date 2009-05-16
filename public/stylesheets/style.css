@@ -41,7 +41,7 @@ h1 {
 }
 
 h1, h2, h3 {
-	color: #454545;
+	color: #185DA0;
 }
 
 h1 a, h2 a {
@@ -135,7 +135,8 @@ div.menu a {
 div.menu h2 {
   margin: .5em auto 0.3em;
   font-size: 1.3em;
-  text-align:center
+  text-align:center;
+  color: #555;
 }
 
 dl {
@@ -164,14 +165,14 @@ dd.price {
   float: right;
   padding-left: 3px;
   background-color: #fff;
-  color: #555
+  color: #555;
 }
 
 dd.ingredients {
   float: left;
   width: 100%;
   padding: 0px 0;
-  color: #555
+  color: #555;
 }
 
 dd.comments  {
@@ -181,7 +182,7 @@ dd.comments  {
 
 dd.comments, dd.comments a {
   font-size: .9em;
-  color: #aaa;
+  color: #888;
 }
 
 dd.comments a {

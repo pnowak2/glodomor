@@ -18,38 +18,6 @@
             =link_to "Add to cart", {:controller => 'store', :action => 'add_to_cart', :id => p.id}, :method => :post
         %div.clearfix
 
-  %h2 New products:
-
-  %ul
-    - Product.recent.published.each do |p|
-      %li
-        =link_to p.name, product_path(p)
-        =image_tag p.photo.url(:thumb)
-
-  %h2 Last registered items:
-
-  %ul
-    - LineItem.recent.each do |li|
-      %li= link_to li.name, product_path(li.product_id)
-
-  %h2 Last registered users:
-
-  %ul
-    - User.recent.each do |u|
-      %li
-        =link_to "#{u.first_name} #{u.last_name} (#{u.email})", user_path(u)
-        =image_tag u.avatar.url(:thumb)
-
-  %h2 Users recently logged in:
-
-  %ul
-    - User.recently_logged.each do |u|
-      %li
-        =link_to "#{u.first_name} #{u.last_name} (#{u.email})", user_path(u)
-        =image_tag u.avatar.url(:thumb)
-        
-  =image_tag('/images/muppet chef.jpg')
-
 - content_for :subheader do
   %b Store
   %br

@@ -7,6 +7,9 @@ class StoreController < ApplicationController
   def index
     @product_categories = ProductCategory.all
   end
+  
+  def home
+  end
 
   def checkout_confirm
     @order = Order.new
