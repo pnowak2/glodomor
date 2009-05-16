@@ -1,5 +1,5 @@
 %div.item_image
-  = image_tag @product.photo.url(:medium)
+  = image_tag(@product.picture(:medium))
 = form.label :name 
 %br
 = form.text_field :name

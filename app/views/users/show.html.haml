@@ -1,6 +1,6 @@
 %div.box
   %div.item_image
-    = link_to image_tag (@user.avatar.url(:medium)), @user.avatar.url
+    = link_to(image_tag(@user.picture(:medium)), @user.picture)
   %p
     %b Name:
     =h "#{@user.first_name} #{@user.last_name}"

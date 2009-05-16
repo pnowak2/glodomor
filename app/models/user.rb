@@ -15,4 +15,20 @@ class User < ActiveRecord::Base
   def self.ROLES
     {:admin => 'admin', :user => 'user'}
   end
+  
+  def picture(mode=nil)     
+      if(self.avatar?)
+        self.avatar.url(mode)
+      else
+        case (mode)
+          when :thumb
+            "/images/information-icon.gif"
+          when :medium
+            "/images/rails.png"
+          else
+            "/images/rails.png"
+        end
+      end
+  end
+
 end

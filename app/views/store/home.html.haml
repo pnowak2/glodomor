@@ -89,34 +89,3 @@
 %div.left_box
   %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex.
 
-
-%h2 New products:
-
-%ul
-  - Product.recent.published.each do |p|
-    %li
-      =link_to p.name, product_path(p)
-      =image_tag p.photo.url(:thumb)
-
-%h2 Last registered items:
-
-%ul
-  - LineItem.recent.each do |li|
-    %li= link_to li.name, product_path(li.product_id)
-
-%h2 Last registered users:
-
-%ul
-  - User.recent.each do |u|
-    %li
-      =link_to "#{u.first_name} #{u.last_name} (#{u.email})", user_path(u)
-      =image_tag u.avatar.url(:thumb)
-
-%h2 Users recently logged in:
-
-%ul
-  - User.recently_logged.each do |u|
-    %li
-      =link_to "#{u.first_name} #{u.last_name} (#{u.email})", user_path(u)
-      =image_tag u.avatar.url(:thumb)
-      

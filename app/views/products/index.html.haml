@@ -16,7 +16,7 @@
         %td= h product.price 
         %td= link_to product.product_category, product.product_category if product.product_category
         %td= product.published ? 'yes' : 'no'
-        %td= image_tag product.photo.url(:thumb)
+        %td= image_tag product.picture(:thumb)
         %td= link_to 'Show', product 
         %td= link_to 'Edit', edit_product_path(product) 
         %td= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete 
