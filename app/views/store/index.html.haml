@@ -1,5 +1,10 @@
 %h1 Store
 
+%h2 News
+%ul
+  - Message.recent.each do |m|
+    %li=link_to m.title, m
+
 %ul
   - @product_categories.each do |c|
     %li
@@ -26,7 +31,9 @@
 
 %ul
   - User.recent.each do |u|
-    %li= link_to "#{u.first_name} #{u.last_name} (#{u.email})", user_path(u)
+    %li
+      =link_to "#{u.first_name} #{u.last_name} (#{u.email})", user_path(u)
+      =image_tag u.avatar.url(:thumb)
 
 %h2 Users recently logged in:
 

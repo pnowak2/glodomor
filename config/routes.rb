@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :messages
+
   map.root :controller => "store", :action => "index" # optional, this just sets the root route
   map.resources :users, :product_categories, :products, :orders
   map.resource :user_session
