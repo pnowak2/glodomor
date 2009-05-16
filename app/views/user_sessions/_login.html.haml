@@ -1,0 +1,12 @@
+- form_for user_session, :url => user_session_path do |f|
+  = f.error_messages
+  = f.label :email 
+  = f.text_field :email, :class=>'login'
+  %br
+  = f.label :password  = f.password_field :password, :class=>'login'
+  %br
+  = f.check_box :remember_me 
+  = f.label :remember_me 
+  %br  = f.submit "Login"
+  or
+  = link_to "Register", new_user_path
