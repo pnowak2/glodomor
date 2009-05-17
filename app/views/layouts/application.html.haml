@@ -59,10 +59,10 @@
             %li= link_to "Register", new_user_path
               
       %div.search_field
-        %form{:method => 'post', :action => '?'}
+        - form_tag(search_path) do
           %p
-            %input.search{:type => 'text', :name => 'search'}
-            %input.searchSubmit{:type => 'submit', :value => 'Search'}
+            =text_field_tag :phrase, params[:phrase], :class => 'search'
+            =submit_tag "Search"
 
       - if @content_for_subheader
         %div.left_message

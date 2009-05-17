@@ -1,0 +1,9 @@
+%div.box
+  %div.menu
+    %h2 Search results
+    =render :partial => 'product', :collection => @products
+  
+- content_for :subheader do
+  %b Search
+  %br
+  This page allows you to search & buy items

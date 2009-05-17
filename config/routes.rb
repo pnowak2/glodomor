@@ -12,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.login 'login', :controller => "user_sessions", :action => "new"
   map.store 'store', :controller => "store", :action => "index"
   map.home 'home', :controller => "store", :action => "home"
+  map.search 'search', :controller => "store", :action => "search"
   map.checkout_confirm 'checkout_confirm', :controller => "store", :action => "checkout_confirm"
   map.my_orders 'my_orders', :controller => "orders", :action => "my_orders"
 

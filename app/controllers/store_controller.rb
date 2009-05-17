@@ -6,10 +6,18 @@ class StoreController < ApplicationController
   before_filter :require_user, :only => [:checkout]
   
   def index
-    @product_categories = ProductCategory.all
+    @product_categories = ProductCategory.all(:order => 'name')
   end
   
   def home
+  end
+
+  def search
+    param = params[:phrase]
+    @products = Product.find(:all,:conditions => [
+                                                 "name like :name or description like :description", 
+                                                 {:name=>"%#{param}%", :description =>"%#{param}%"}
+                                                 ], :order => 'name')
   end
 
   def checkout_confirm
