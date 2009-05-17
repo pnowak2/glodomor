@@ -14,10 +14,14 @@ class StoreController < ApplicationController
 
   def search
     param = params[:phrase]
-    @products = Product.find(:all,:conditions => [
-                                                 "name like :name or description like :description", 
-                                                 {:name=>"%#{param}%", :description =>"%#{param}%"}
-                                                 ], :order => 'name')
+    if(param.blank?) 
+      redirect_to store_path
+      return
+   end
+   @products = Product.find(:all,:conditions => [
+                                                "name like :name or description like :description", 
+                                                {:name=>"%#{param}%", :description =>"%#{param}%"}
+                                                ], :order => 'name')
   end
 
   def checkout_confirm
