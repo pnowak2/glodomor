@@ -91,6 +91,16 @@ class StoreController < ApplicationController
       flash[:notice] = "Your cart is empty"
       redirect_to store_path
     end
+
+    products = []
+    find_cart.items.each do |i|
+      if(!Product.exists?(i.product_id) || !Product.find(i.product_id).published?)
+        products << i.name
+        flash[:notice] = "These items are no longer available: #{products.join(', ')}"
+      end      
+    end
+ 
+    redirect_to checkout_confirm_path unless products.empty?
   end
 
 end
