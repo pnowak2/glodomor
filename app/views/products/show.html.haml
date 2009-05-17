@@ -29,7 +29,8 @@
   =link_to "Back to store", store_path
   %br  
     
-%h2#comments Comments
+%h2#comments 
+  ="Comments (#{@product.comments.size})"
 
 - @product.comments.each do |c|
   %p
