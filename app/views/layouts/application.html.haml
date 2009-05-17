@@ -48,15 +48,15 @@
           - if current_user            %li= link_to "My orders", my_orders_path     
             %li= link_to "My profile", user_path(current_user)
 
-          %ul.right_bar
-            - if current_user    
-              - if current_user.is_admin?
-                %li= link_to "Users", users_path 
-                %li= link_to "Products", products_path                 %li= link_to "Product categories", product_categories_path
-                %li= link_to "Orders", orders_path
-              %li= link_to "Logout", logout_path
-            - else
-              %li= link_to "Register", new_user_path
+        %ul.right_bar
+          - if current_user    
+            - if current_user.is_admin?
+              %li= link_to "Users", users_path 
+              %li= link_to "Products", products_path               %li= link_to "Product categories", product_categories_path
+              %li= link_to "Orders", orders_path
+            %li= link_to "Logout", logout_path
+          - else
+            %li= link_to "Register", new_user_path
               
       %div.search_field
         %form{:method => 'post', :action => '?'}
