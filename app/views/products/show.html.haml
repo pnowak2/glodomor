@@ -15,6 +15,10 @@
     =h @product.price
 
   %p
+    %b Inventory
+    =h @product.inventory ? @product.inventory : 'unlimited'
+
+  %p
     %b Published
     =h @product.published ? 'yes' : 'no'
 
