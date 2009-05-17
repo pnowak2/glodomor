@@ -1,20 +1,19 @@
-%h1 Listing product categories
+%div.box
+  %h2 Listing product categories
 
-%table
-  %tr
-    %th Name
-
-  - @product_categories.each do |product_category|
+  %table
     %tr
-      %td
-        %b= link_to product_category, product_category
-        %ul
-          - product_category.products.each do |p|
-            %li= link_to p, p
-      %td= link_to 'Edit', edit_product_category_path(product_category) 
-      %td= link_to 'Destroy', product_category, :confirm => 'Are you sure?', :method => :delete 
+      %th Name
 
-%br
+    - @product_categories.each do |product_category|
+      %tr
+        %td
+          %b= link_to product_category, product_category
+          %ul
+            - product_category.products.each do |p|
+              %li= link_to p, p
+        %td= link_to 'Edit', edit_product_category_path(product_category) 
+        %td= link_to 'Destroy', product_category, :confirm => 'Are you sure?', :method => :delete 
 
 = link_to 'New product category', new_product_category_path
 - content_for :subheader do

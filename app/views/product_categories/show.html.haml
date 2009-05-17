@@ -1,11 +1,13 @@
-%p
-  %b Name:
-  =h @product_category.name
+%div.box
+  %h2 Product category
+  %p
+    %b Name:
+    =h @product_category.name
 
-Products:
-%ul
-  - @product_category.products.each do |p|
-    %li= link_to p.name, p
+  Products:
+  %ul
+    - @product_category.products.each do |p|
+      %li= link_to p.name, p
 
 = link_to 'Edit', edit_product_category_path(@product_category)
 |

@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   # GET /products/new.xml
   def new
-    @product = Product.new
+    @product = Product.new(:published => true)
     @product_categories = ProductCategory.find(:all)
 
     respond_to do |format|

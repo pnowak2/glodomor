@@ -1,11 +1,10 @@
-%h1 Editing product category
+%div.box
+  %h2 Editing product category
 
-- form_for @product_category do |f|
-  = f.error_messages
-  = render :partial => "form", :object => f
-  = f.submit "update"
-    
-%br
+  - form_for @product_category do |f|
+    = f.error_messages
+    = render :partial => "form", :object => f
+    = f.submit "update"
 
 = link_to 'Show', @product_category
 |
