@@ -1,4 +1,5 @@
 %div.box
+  %h1{:style=>'text-align: center;'} Menu
   %div.menu
     - @product_categories.each do |c|
       - if c.products.available.size > 0
