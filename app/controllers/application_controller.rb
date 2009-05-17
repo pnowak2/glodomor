@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
       else
         if(role && role != current_user.role)
           flash[:notice] = "You must be logged as #{role}"
-          redirect_to root_path
+          redirect_to params[:return_to] || root_path
         end
       end
     end

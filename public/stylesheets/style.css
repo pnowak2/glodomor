@@ -127,6 +127,12 @@ div.menu {
   text-align:left
 }
 
+div.product_picture {
+  float:left;
+  padding-right: 5px;
+  padding-bottom: 10px;
+}
+
 div.menu a {
   color: #555;
   text-decoration: none;
@@ -296,7 +302,7 @@ img.today_info_image {
 }
 	.bar li { 
 		margin: 0; 
-		padding: 4px 10px 8px 10px;
+		padding: 4px 8px 8px 8px;
 		color: #808080;
 		float: left; 
 	}
