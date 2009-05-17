@@ -1,8 +1,9 @@
 %div.box
   %div.menu
     - @product_categories.each do |c|
-      %h2= c.name
-      =render :partial => 'product', :collection => c.products.available
+      - if c.products.available.size > 0
+        %h2= c.name
+        =render :partial => 'product', :collection => c.products.available
 
 - content_for :subheader do
   %b Store
