@@ -24,7 +24,7 @@ class Product < ActiveRecord::Base
   end
   
   def available?(quantity=nil)
-    self.published? && (self.inventory == nil || self.inventory > 0) && (quantity ? self.inventory >= quantity : true)
+    self.published? && (self.inventory == nil || self.inventory > 0) && ((quantity && self.inventory) ? self.inventory >= quantity : true)
   end
     def to_s
     self.name
