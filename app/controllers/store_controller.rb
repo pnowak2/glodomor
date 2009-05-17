@@ -82,8 +82,10 @@ class StoreController < ApplicationController
     
     @cart.items.each do |i|
       p = Product.find(i.product_id)
-      p.inventory-=i.quantity
-      p.save!
+      if(p.inventory && p.inventory > 0)
+        p.inventory-=i.quantity
+        p.save!
+      end
     end
 
     if(@order.save)
@@ -105,10 +107,13 @@ class StoreController < ApplicationController
 
     products = []
     find_cart.items.each do |i|
-      if(!Product.exists?(i.product_id) || !Product.find(i.product_id).available? || 
-                                           (Product.find(i.product_id).inventory < i.quantity))
-        products << (i.name)
-        flash[:notice] = "These items are no longer available or there's not enough in inventory: #{products.join(', ')}. Please check the item availability."
+      if(!Product.exists?(i.product_id))
+      else
+        p = Product.find(i.product_id)
+        if (!p.available? || (p.inventory && p.inventory < i.quantity))
+          products << (i.name)
+          flash[:notice] = "These items are no longer available or there's not enough in inventory: #{products.join(', ')}. Please check the item availability."
+        end
       end     
     end
  

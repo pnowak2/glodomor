@@ -434,15 +434,13 @@ img.today_info_image {
 
 /* footer
    ------ */
-
-.footer { 
-	clear: both; 
+#footer {
+  background:#ffffff url(../images/img18.gif) repeat-x scroll left bottom;
+  padding:40px 0;
+  clear: both;
 	text-align: center;
 	line-height: 1.8em;
 	color: #808080;
-	background: #FFF;
-	padding: 10px 0 10px 0;
-	border-top: 1px solid #eee;
 }
 
 .footer a {
