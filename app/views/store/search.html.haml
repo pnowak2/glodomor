@@ -1,6 +1,7 @@
 %div.box
+  %h1{:style=>'text-align: center;'} Search results
+  %br
   %div.menu
-    %h2 Search results
     =render :partial => 'product', :collection => @products
   
 - content_for :subheader do
