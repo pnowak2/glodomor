@@ -18,7 +18,7 @@ class StoreController < ApplicationController
       redirect_to store_path
       return
    end
-   @products = Product.published.find(:all,:conditions => [
+   @products = Product.available.find(:all,:conditions => [
                                                 "name like :name or description like :description", 
                                                 {:name=>"%#{param}%", :description =>"%#{param}%"}
                                                 ], :order => 'name')
@@ -37,9 +37,14 @@ class StoreController < ApplicationController
       flash[:notice] = "Invalid product"
     else
       @cart = find_cart
-      @cart.add_product(product) if product.published
-      flash[:notice] = "Your cart has been updated with #{product}"
-      redirect_to checkout_confirm_path
+      if product.available?
+        @cart.add_product(product) 
+        flash[:notice] = "Your cart has been updated with #{product}"
+        redirect_to checkout_confirm_path
+      else
+        flash[:notice] = "This item is no longer available"
+        redirect_to product_path(product)
+      end
     end
   end
 
@@ -74,6 +79,12 @@ class StoreController < ApplicationController
     @order = Order.new(params[:order])
     @order.add_line_items_from_cart(@cart)
     @order.user = current_user if current_user
+    
+    @cart.items.each do |i|
+      p = Product.find(i.product_id)
+      p.inventory-=i.quantity
+      p.save!
+    end
 
     if(@order.save)
       flash[:notice] = "Your order have been completed"
@@ -94,10 +105,11 @@ class StoreController < ApplicationController
 
     products = []
     find_cart.items.each do |i|
-      if(!Product.exists?(i.product_id) || !Product.find(i.product_id).published?)
-        products << i.name
-        flash[:notice] = "These items are no longer available: #{products.join(', ')}"
-      end      
+      if(!Product.exists?(i.product_id) || !Product.find(i.product_id).available? || 
+                                           (Product.find(i.product_id).inventory < i.quantity))
+        products << (i.name)
+        flash[:notice] = "These items are no longer available or there's not enough in inventory: #{products.join(', ')}. Please check the item availability."
+      end     
     end
  
     redirect_to checkout_confirm_path unless products.empty?

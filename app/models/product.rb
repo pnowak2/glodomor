@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
   has_many :comments, :as => :commentable
   has_attached_file :photo, :styles => { :medium => "150x150#", :thumb => "40x40#" }
     
-  named_scope :published, :conditions => ["published = :published and (inventory is null or inventory > :inventory)", {:inventory => 0, :published => true} ]
+  named_scope :available, :conditions => ["published = :published and (inventory is null or inventory > :inventory)", {:inventory => 0, :published => true} ]
   named_scope :recent,
               lambda {|*args| {:conditions => ["created_at > ?", (args.first || 2.days.ago)], :limit => 3 } }
 
@@ -21,6 +21,10 @@ class Product < ActiveRecord::Base
             "/images/rails.png"
         end
       end
+  end
+  
+  def available?
+    self.published? && (self.inventory == nil || self.inventory > 0)
   end
     def to_s
     self.name

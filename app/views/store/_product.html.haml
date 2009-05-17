@@ -1,7 +1,7 @@
 %div.product_picture
   =link_to (image_tag(product.picture(:thumb)), product)
 %dl
-  %dt= link_to(product.name, product)
+  %dt= link_to("#{product.name}", product)
   %dd.price= number_to_currency(product.price)
   %dd.ingredients= product.description
   %dd.comments 
@@ -10,5 +10,8 @@
     |
     = image_tag '../images/document-lines-micro-icon.png', :class=>'add_to_cart_icon'
     =link_to "Add to cart", {:controller => 'store', :action => 'add_to_cart', :id => product.id}, :method => :post
+    - if product.inventory?
+      |
+      =link_to "Ilość: #{product.inventory}", product
     
 %div.clearfix

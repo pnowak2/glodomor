@@ -19,8 +19,8 @@
     =h @product.inventory ? @product.inventory : 'unlimited'
 
   %p
-    %b Published
-    =h @product.published ? 'yes' : 'no'
+    %b Available
+    =h @product.available? ? 'yes' : 'no'
 
   %p
     %b Product category:
