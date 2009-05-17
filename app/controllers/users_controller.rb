@@ -22,6 +22,10 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user].reject{|k,v| k == 'role'})
+    if User.count == 0
+      @user.role = User.ROLES[:admin]
+    end
+    
     if @user.save
       flash[:notice] = "Account registered!"
       redirect_back_or_default user_path(@user)
