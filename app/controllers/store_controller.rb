@@ -42,7 +42,7 @@ class StoreController < ApplicationController
         flash[:notice] = "Your cart has been updated with #{product}"
         redirect_to checkout_confirm_path
       else
-        flash[:notice] = "This item is no longer available"
+        flash[:notice] = "This item is no longer available. Please try again later."
         redirect_to product_path(product)
       end
     end
@@ -108,16 +108,19 @@ class StoreController < ApplicationController
     products = []
     find_cart.items.each do |i|
       if(!Product.exists?(i.product_id))
+        products << (i.name + " - does not exist")
       else
         p = Product.find(i.product_id)
-        if (!p.available? || (p.inventory && p.inventory < i.quantity))
-          products << (i.name)
-          flash[:notice] = "These items are no longer available or there's not enough in inventory: #{products.join(', ')}. Please check the item availability."
+        if (!p.available?(i.quantity))
+          products << (i.name + " - not enough items or not published")
         end
       end     
     end
- 
-    redirect_to checkout_confirm_path unless products.empty?
+    
+    unless products.empty?
+      flash[:notice] = "These items are no longer available: #{products.join(', ')}"
+      redirect_to checkout_confirm_path 
+    end  
   end
 
 end

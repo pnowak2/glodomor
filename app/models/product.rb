@@ -23,8 +23,8 @@ class Product < ActiveRecord::Base
       end
   end
   
-  def available?
-    self.published? && (self.inventory == nil || self.inventory > 0)
+  def available?(quantity=nil)
+    self.published? && (self.inventory == nil || self.inventory > 0) && (quantity ? self.inventory >= quantity : true)
   end
     def to_s
     self.name
