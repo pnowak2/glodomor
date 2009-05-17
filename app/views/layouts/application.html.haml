@@ -46,7 +46,7 @@
             =link_to "My cart", :controller => 'store', :action => 'checkout_confirm'
             ="(#{@cart.total_quantity})"
           - if current_user            %li= link_to "My orders", my_orders_path     
-            %li= link_to "My profile", user_path(current_user)
+            %li= link_to "My profile", my_profile_path
 
         %ul.right_bar
           - if current_user    

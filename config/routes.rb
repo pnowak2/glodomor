@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :orders, :has_many => :comments
   map.resource :user_session
   
+  map.my_profile 'my_profile', :controller => 'users', :action => 'my_profile'
   map.logout 'logout', :controller => "user_sessions", :action => "destroy" 
   map.login 'login', :controller => "user_sessions", :action => "new"
   map.store 'store', :controller => "store", :action => "index"
