@@ -2,7 +2,7 @@
   %div.menu
     - @product_categories.each do |c|
       %h2= c.name
-      =render :partial => 'product', :collection => c.products
+      =render :partial => 'product', :collection => c.products.published
 
 - content_for :subheader do
   %b Store

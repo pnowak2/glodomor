@@ -18,7 +18,7 @@ class StoreController < ApplicationController
       redirect_to store_path
       return
    end
-   @products = Product.find(:all,:conditions => [
+   @products = Product.published.find(:all,:conditions => [
                                                 "name like :name or description like :description", 
                                                 {:name=>"%#{param}%", :description =>"%#{param}%"}
                                                 ], :order => 'name')

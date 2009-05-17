@@ -4,20 +4,17 @@
   %table
     %tr
       %th Name
-      %th Description
       %th Price
       %th Product category
       %th Published
 
     - @products.each do |product|
       %tr
-        %td= h product.name
-        %td= h product.description 
+        %td= link_to product.name, product
         %td= h product.price 
         %td= link_to product.product_category, product.product_category if product.product_category
         %td= product.published ? 'yes' : 'no'
         %td= image_tag product.picture(:thumb)
-        %td= link_to 'Show', product 
         %td= link_to 'Edit', edit_product_path(product) 
         %td= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete 
 
