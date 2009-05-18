@@ -106,11 +106,22 @@ textarea {
 }
 
 input.search { 
+  -moz-border-radius-bottomleft:4px;
+  -moz-border-radius-bottomright:4px;
+  -moz-border-radius-topleft:4px;
+  -moz-border-radius-topright:4px;
 	width: 199px; 
-	height: 16px;
 	border: 1px solid #888888; 
-	background: url(../images/inputBg.gif) no-repeat scroll left top;
-	padding: 2px; 
+	background: url(../images/inputSearchBg.gif) no-repeat scroll left top;
+	padding: 5px 5px 5px 25px; 
+	color: #666666;
+	font-weight: bold;
+}
+
+input.searchButton {
+  height: 2.15em;
+  padding: 0 inherit;
+  color: #444;
 }
 
 input.login { 

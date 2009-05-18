@@ -62,7 +62,7 @@
         - form_tag(search_path) do
           %p
             =text_field_tag :phrase, params[:phrase], :class => 'search'
-            =submit_tag "Search"
+            =submit_tag "Search", :class=>'searchButton'
 
       - if @content_for_subheader
         %div.left_message
