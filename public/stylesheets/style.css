@@ -89,48 +89,42 @@ form {
 
 input[type='text'], input[type='password'], textarea {
   color: #666666;
-}
-
-input[type='text'], input[type='password'] {
-	width: 150px;
-	height: 16px;
-	border: 1px solid #888888; 
-	background: url(../images/inputBg.gif) no-repeat scroll left top;
-	padding: 2px; 
-}
-
-textarea {
-	border: 1px solid #888888; 
-	background: url(../images/inputBg.gif) no-repeat scroll left top;
-	padding: 2px; 
-}
-
-input.search { 
   -moz-border-radius-bottomleft:4px;
   -moz-border-radius-bottomright:4px;
   -moz-border-radius-topleft:4px;
   -moz-border-radius-topright:4px;
-	width: 199px; 
+	width: 250px;
 	border: 1px solid #888888; 
+	background: url(../images/inputBg.gif) no-repeat scroll left top;
+	padding: 4px; 
+}
+
+
+input.search { 
+	width: 199px; 
 	background: url(../images/inputSearchBg.gif) no-repeat scroll left top;
 	padding: 5px 5px 5px 25px; 
-	color: #666666;
 	font-weight: bold;
 }
 
 input.searchButton {
-  height: 2.15em;
-  padding: 0 inherit;
+  height: 2.2em;
+  padding: 2px inherit;
   color: #444;
 }
 
-input.login { 
-	width: 150px;
-	border: 1px solid #888888; 
-	background: url(../images/inputBg.gif) no-repeat scroll left top;
-	padding: 2px; 
+input.login, input.password { 
+	width: 150px; 
+	padding: 4px 4px 4px 20px; 
 }
 
+input.login {
+  background: url(../images/inputUserBg.gif) no-repeat scroll left top;
+}
+
+input.password {
+  background: url(../images/inputPasswordBg.gif) no-repeat scroll left top;
+}
 /* layout
    ------ */
 
