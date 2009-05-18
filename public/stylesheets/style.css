@@ -461,21 +461,22 @@ div.box h2 {
 	padding-bottom: 0;
 	margin-bottom: 0;
 }
-div.box p{padding-bottom:14px;}
+div.box p.description{padding-bottom:14px;}
 
 div.box label{
 	display:block;
 	margin-bottom:10px;
+	font-size: 1.3em;
+	color: #aaa;
 }
 
 div.box label span{
 	display:block;
 	float:left;
-	padding: 4px 6px 0 0;
+	padding: 0px 6px 0 0;
 	width:110px;
 	text-align:left;
 	font-weight:bold;
-  font-size: 1.3em;
   color: #888;
 }
 .spacer{

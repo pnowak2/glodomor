@@ -1,36 +1,39 @@
 %div.box
   %h2 Product 
+  %p.description Lorem ipsum dolor est sit amet
+  
   %div.item_image
     = link_to(image_tag(@product.picture(:medium)), @product.picture)
-  %p
-    %b Name:
+  
+  %label
+    %span Name:
     =h @product.name
 
-  %p
-    %b Description:
+  %label
+    %span Description:
     =h @product.description 
      
-  %p
-    %b Price:
+  %label
+    %span Price:
     =h @product.price
 
-  %p
-    %b Inventory
+  %label
+    %span Inventory:
     =h @product.inventory ? @product.inventory : 'unlimited'
 
-  %p
-    %b Available
+  %label
+    %span Available:
     =h @product.available? ? 'yes' : 'no'
 
-  %p
-    %b Product category:
+  %label
+    %span Category:
     = link_to @product.product_category, @product.product_category
     
-  %br
 
   =button_to "Add to cart", :controller => "store", :action => "add_to_cart", :id => @product
   or
   =link_to "Back to store", store_path
+    
   %br  
     
 %h2#comments 
