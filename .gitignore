@@ -19,3 +19,4 @@ src/*
 nbproject
 public/avatars/*
 public/photos/*
+public/system/*
