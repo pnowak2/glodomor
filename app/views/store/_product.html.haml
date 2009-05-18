@@ -7,7 +7,6 @@
     %dd.ingredients= product.description
   %dd.comments 
     ="Comments: #{product.comments.size}"
-    =link_to "(Add comment)", product_path(product) + "#comments"
     - if product.inventory?
       |
       ="Items count: #{product.inventory}"
