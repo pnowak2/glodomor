@@ -37,4 +37,13 @@ class Cart
   def is_empty?
     @items.size <=0
   end
+
+  def [](key)
+    @items.each do |i|
+      if(i.product_id == key)
+        return i
+      end
+    end
+    nil
+  end
 end

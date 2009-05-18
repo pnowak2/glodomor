@@ -8,10 +8,10 @@ class CommentsController < ApplicationController
     @comment.user = current_user if current_user
     if @commentable && @comment.save
       flash[:notice] = "Successfully created comment."
-      redirect_to params[:return_to]
+      redirect_to @commentable
     else
-      flash[:notice] = "Couldn't create comment for that product"
-      redirect_to params[:return_to]
+      flash[:notice] = "Couldn't create comment for that item"
+      redirect_to @commentable
     end
   end
 

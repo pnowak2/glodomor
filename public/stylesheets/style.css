@@ -22,7 +22,8 @@ img {
 }
 
 a {
-	color: #185DA0;}
+	color: #185DA0;
+}
 
 a:hover {
 	color: #9EC068;
@@ -49,7 +50,8 @@ h1 a, h2 a {
 }
 
 h1 a:hover, h2 a:hover {
-	color: #FF6600;}
+	color: #FF6600;
+}
 
 
 h2 { 
@@ -67,7 +69,8 @@ h3 {
 
 h2 { 
 	font-size: 16px;
-	margin-bottom: 5px; }
+	margin-bottom: 5px; 
+}
 
 p {	
 	margin: 0 0 5px 0;
@@ -93,7 +96,8 @@ input[type='text'], input[type='password'] {
 	height: 16px;
 	border: 1px solid #888888; 
 	background: url(../images/inputBg.gif) no-repeat scroll left top;
-	padding: 2px; }
+	padding: 2px; 
+}
 
 textarea {
 	border: 1px solid #888888; 
@@ -147,7 +151,7 @@ div.menu h2 {
 
 dl {
   width: 89%;
-  overflow: auto;
+  overflow: hidden;
   margin: 0 0 .6em;
   background: url(../images/dot.gif) repeat-x 0 1.2em
 }
@@ -184,6 +188,8 @@ dd.ingredients {
 dd.comments  {
   float: left;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 dd.comments, dd.comments a {
@@ -195,20 +201,13 @@ dd.comments a {
   text-decoration: underline;
 }
 
-dd.comments img.comments_icon {
-  float: left;
-}
-
-dd.comments img.comments_icon, dd.comments img.add_to_cart_icon {
-  padding: 0 5px 0 0; 
-  border: 0;
-}
 /* Menu end */
   
 div.item_image {
   float: right;
 }  
-   div.box {
+   
+div.box {
   background: url(../images/form_background.gif) repeat-x scroll left top;
   padding: 10px 15px 15px 15px;
   border-top: 1px solid #dddddd;
@@ -218,7 +217,8 @@ div.item_image {
 
 .notify {
 		padding: 10px 10px 10px 40px;
-		margin: 5px 0 10px 0;		color: #246088;
+		margin: 5px 0 10px 0;
+		color: #246088;
 		border-top: 1px solid #cccccc;
 		border-bottom: 1px solid #cccccc;
 		background: #F4F4F4 url(../images/Information_icon-sm.png) no-repeat scroll 7px 5px;
@@ -238,12 +238,12 @@ img.today_info_image {
 }
 
 .cart {
-		padding: 10px;
-		margin: 0 0 10px 0;
-		background-color: #DCF2B8;
-		color: #246088;
-		border-top: 1px solid #9EC068;
-		border-bottom: 1px solid #9EC068;
+  padding: 10px;
+  margin: 0 0 10px 0;
+  background-color: #DCF2B8;
+  color: #246088;
+  border-top: 1px solid #9EC068;
+  border-bottom: 1px solid #9EC068;
 }
 
 .company_motto {
@@ -316,7 +316,8 @@ img.today_info_image {
 
 	.bar a { 
 		font-weight: bold;
-		color: #4A8EBC; 	} 
+		color: #4A8EBC; 
+	} 
 
 .search_field { 
 	background: #DCF2B8 url(../images/barbg.gif) no-repeat;

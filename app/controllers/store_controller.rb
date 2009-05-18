@@ -59,7 +59,7 @@ class StoreController < ApplicationController
     @order = Order.new
     @cart = find_cart
     items.each do |k, v|
-      item = @cart.items.find{|i| i.product_id == k.to_i}
+      item = @cart[k.to_i]
       if(item)
         if(items[k][:quantity].to_i<=0 || items[k][:deleted])
           @cart.items.delete(item)
@@ -105,20 +105,20 @@ class StoreController < ApplicationController
       redirect_to store_path
     end
 
-    products = []
+    unavailable_products = []
     find_cart.items.each do |i|
       if(!Product.exists?(i.product_id))
-        products << (i.name + " - does not exist")
+        unavailable_products << (i.name + " - does not exist")
       else
         p = Product.find(i.product_id)
         if (!p.available?(i.quantity))
-          products << (i.name + " - not enough items or not published")
+          unavailable_products << (i.name + " - not enough items (#{p.inventory} items left) or item not available")
         end
       end     
     end
     
-    unless products.empty?
-      flash[:notice] = "These items are no longer available: #{products.join(', ')}"
+    unless unavailable_products.empty?
+      flash[:notice] = "These items are no longer available:<br/> #{unavailable_products.join('<br/> ')}"
       redirect_to checkout_confirm_path 
     end  
   end
