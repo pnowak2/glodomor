@@ -99,6 +99,11 @@ input[type='text'], input[type='password'], textarea {
 	padding: 4px; 
 }
 
+submit, input[type='button'], input[type='submit'] {
+  height: 2.2em;
+  padding: 4px;
+  color: #444;
+}
 
 input.search { 
 	width: 199px; 
