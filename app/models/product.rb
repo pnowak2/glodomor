@@ -2,7 +2,7 @@ class Product < ActiveRecord::Base
   belongs_to :product_category
   has_many :line_items
   has_many :comments, :as => :commentable
-  has_attached_file :photo, :styles => { :medium => "150x150#", :thumb => "40x40#" }
+  has_attached_file :photo, :styles => { :medium => "80x80#", :thumb => "40x40#" }
     
   named_scope :available, :conditions => ["published = :published and (inventory is null or inventory > :inventory)", {:inventory => 0, :published => true} ]
   named_scope :recent,

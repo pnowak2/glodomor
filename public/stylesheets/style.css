@@ -68,7 +68,6 @@ h3 {
 }
 
 h2 { 
-	font-size: 16px;
 	margin-bottom: 5px; 
 }
 
@@ -114,7 +113,7 @@ input.search {
 
 input.searchButton {
   height: 2.2em;
-  padding: 2px inherit;
+  padding: 2px 10px;
   color: #444;
 }
 
@@ -458,3 +457,31 @@ img.today_info_image {
 	color: #9EC068;
 	background: #fff;
 }
+div.box h2 {
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+div.box p{padding-bottom:14px;}
+
+div.box label{
+	display:block;
+	margin-bottom:10px;
+}
+
+div.box label span{
+	display:block;
+	float:left;
+	padding: 4px 6px 0 0;
+	width:110px;
+	text-align:left;
+	font-weight:bold;
+  font-size: 1.3em;
+  color: #666;
+}
+.spacer{
+  margin-left:115px; 
+	margin-bottom:10px;
+	font-size:11px;
+	color:#555555;
+}
+

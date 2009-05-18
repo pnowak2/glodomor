@@ -4,7 +4,8 @@
   - form_for @product_category do |f|
     = f.error_messages
     = render :partial => "form", :object => f
-    = f.submit "update"
+    %div.spacer
+      = f.submit "update"
 
 = link_to 'Show', @product_category
 |

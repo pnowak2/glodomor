@@ -1,32 +1,27 @@
+%p Lorem ipsum dolor est sit amet
+
 %div.item_image
   = image_tag(@product.picture(:medium))
 
-= form.label :published
-%br
-= form.check_box :published
-%br
-= form.label :name 
-%br
-= form.text_field :name
-%br
-= form.label :price
-%br
-= form.text_field :price
-%br
-= form.label :inventory
-%br
-= form.text_field :inventory
-%br
-= form.label :description
-%br
-= form.text_area :description, :rows => 2
-%br
-= form.label :product_category
-%br
-= form.select ("product_category_id", @product_categories.map {|u| [u.name,u.id]})
-%br
-= form.label :photo
-%br
-= form.file_field :photo
-%br
-%br
+%label
+  %span Published:
+  = form.check_box :published
+%label
+  %span Name:
+  = form.text_field :name 
+%label
+  %span Price:
+  = form.text_field :price
+%label
+  %span Inventory:
+  = form.text_field :inventory
+%label
+  %span Description:
+  = form.text_area :description, :rows => 2
+%label
+  %span Category:
+  = form.select ("product_category_id", @product_categories.map {|u| [u.name,u.id]})
+%label
+  %span Photo:
+  = form.file_field :photo
+
