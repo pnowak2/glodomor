@@ -12,7 +12,7 @@ body {
 	line-height: 1.5em;
 	background: #fff; 
 	color: #454545; 
-  background: url(../images/bg_body.gif) repeat-x scroll left top;
+  background: url(../images/../images/bg_body.gif) repeat-x scroll left top;
 }
 
 img {
@@ -94,7 +94,7 @@ input[type='text'], input[type='password'], textarea {
   -moz-border-radius-topright:4px;
 	width: 250px;
 	border: 1px solid #888888; 
-	background: url(../images/inputBg.gif) no-repeat scroll left top;
+	background: url(../images/../images/inputBg.gif) no-repeat scroll left top;
 	padding: 4px; 
 }
 
@@ -106,7 +106,7 @@ submit, input[type='button'], input[type='submit'] {
 
 input.search { 
 	width: 199px; 
-	background: url(../images/inputSearchBg.gif) no-repeat scroll left top;
+	background: url(../images/../images/inputSearchBg.gif) no-repeat scroll left top;
 	padding: 5px 5px 5px 25px; 
 	font-weight: bold;
 }
@@ -123,11 +123,11 @@ input.login, input.password {
 }
 
 input.login {
-  background: url(../images/inputUserBg.gif) no-repeat scroll left top;
+  background: url(../images/../images/inputUserBg.gif) no-repeat scroll left top;
 }
 
 input.password {
-  background: url(../images/inputPasswordBg.gif) no-repeat scroll left top;
+  background: url(../images/../images/inputPasswordBg.gif) no-repeat scroll left top;
 }
 /* layout
    ------ */
@@ -162,7 +162,7 @@ dl {
   width: 89%;
   overflow: hidden;
   margin: 0 0 .6em;
-  background: url(../images/dot.gif) repeat-x 0 1.2em
+  background: url(../images/../images/dot.gif) repeat-x 0 1.2em
 }
     
 dt,dd.price {
@@ -217,7 +217,7 @@ div.item_image {
 }  
    
 div.box {
-  background: url(../images/form_background.gif) repeat-x scroll left top;
+  background: url(../images/../images/form_background.gif) repeat-x scroll left top;
   padding: 10px 15px 15px 15px;
   border-top: 1px solid #dddddd;
   border-bottom: 1px solid #dddddd;
@@ -230,7 +230,7 @@ div.box {
 		color: #246088;
 		border-top: 1px solid #cccccc;
 		border-bottom: 1px solid #cccccc;
-		background: #F4F4F4 url(../images/Information_icon-sm.png) no-repeat scroll 7px 5px;
+		background: #F4F4F4 url(../images/../images/Information_icon-sm.png) no-repeat scroll 7px 5px;
 }
 
 .avatar_thumb {
@@ -317,7 +317,7 @@ img.today_info_image {
 	}
 	
 	.bar li.active { 
-		background: url(../images/bar.gif) no-repeat center bottom;
+		background: url(../images/../images/bar.gif) no-repeat center bottom;
 		color: #9EC068;
 		font-weight: bold; 
 		padding-bottom: 8px; 
@@ -329,7 +329,7 @@ img.today_info_image {
 	} 
 
 .search_field { 
-	background: #DCF2B8 url(../images/barbg.gif) no-repeat;
+	background: #DCF2B8 url(../images/../images/barbg.gif) no-repeat;
 	color: #000;
 	border-top: 1px solid #9EC068;
 	border-bottom: 1px solid #9EC068;
@@ -342,7 +342,7 @@ img.today_info_image {
 .subheader {
 	margin: 3px 0 10px 0;
 	padding: 5px 8px 3px 8px;
-	background: #f4f4f4 url(../images/subheaderbg.gif) no-repeat;
+	background: #f4f4f4 url(../images/../images/subheaderbg.gif) no-repeat;
 	color: #808080;
 	border-bottom: 1px solid #ccc;
 }
@@ -382,7 +382,7 @@ img.today_info_image {
 		border: 1px solid #eee;
 		padding: 10px 10px 10px 75px;	
 		margin: 0 0 10px 0;
-		background: #fff url(../images/chef.jpg) no-repeat bottom left;
+		background: #fff url(../images/../images/chef.jpg) no-repeat bottom left;
 		color: #454545; 
 	}
 	
@@ -445,7 +445,7 @@ img.today_info_image {
 /* footer
    ------ */
 #footer {
-  background:#ffffff url(../images/img18.gif) repeat-x scroll left bottom;
+  background:#ffffff url(../images/../images/img18.gif) repeat-x scroll left bottom;
   padding:40px 0;
   clear: both;
 	text-align: center;
@@ -486,3 +486,14 @@ div.box label span{
 	color:#555555;
 }
 
+/* jQuery.Rating Plugin CSS - http://www.fyneworks.com/jquery/star-rating/ */
+div.rating-cancel,div.star-rating{float:left;width:17px;height:15px;text-indent:-999em;cursor:pointer;display:block;background:transparent;overflow:hidden}
+div.rating-cancel,div.rating-cancel a{background:url(../images/delete.gif) no-repeat 0 -16px}
+div.star-rating,div.star-rating a{background:url(../images/star.gif) no-repeat 0 0px}
+div.rating-cancel a,div.star-rating a{display:block;width:16px;height:100%;background-position:0 0px;border:0}
+div.star-rating-on a{background-position:0 -16px!important}
+div.star-rating-hover a{background-position:0 -32px}
+/* Read Only CSS */
+div.star-rating-readonly a{cursor:default !important}
+/* Partial Star CSS */
+div.star-rating{background:transparent!important;overflow:hidden!important}

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :orders, :include => :line_items
-  has_attached_file :avatar, :styles => { :medium => "150x150>", :thumb => "40x40>" }
+  has_attached_file :avatar, :styles => { :medium => "80x80#", :thumb => "25x25#" }
 
   named_scope :recent,
               lambda {|*args| {:order => "id desc", :limit => 3 } }

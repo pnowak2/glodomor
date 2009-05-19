@@ -34,13 +34,12 @@
   or
   =link_to "Back to store", store_path
     
-  %br  
-    
 %h2#comments 
   ="Comments (#{@product.comments.size})"
 
 - @product.comments.each do |c|
   %p
+    = image_tag c.user.picture(:thumb)
     = c.content
     =link_to("(#{c.user})", c.user) if c.user
     
@@ -50,7 +49,20 @@
   = f.text_area :content, :rows=>3    
   %br
   = f.submit "Add comment"
-    
+
+%h2#rates
+  ="Rates"
+
+- form_for(Rate.new) do |f|
+  = hidden_field_tag :product_id, @product.id
+  = hidden_field_tag :return_to, request.request_uri
+  - (1..5).each do |i|
+    - m = (i == @product.rating_avg.round ? {:checked => 'checked'} : {})
+    = f.radio_button :rating, i, {:class=>'star'}.merge(m)
+
+  %br
+  = f.submit "Add rate"
+
 = link_to 'Edit', edit_product_path(@product)
 |
 = link_to 'Back', products_path

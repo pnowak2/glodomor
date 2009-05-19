@@ -1,38 +1,30 @@
+%p.description Lorem ipsum dolor sit amet
+
 %div.item_image
   = image_tag @user.picture(:medium)
-= form.label :email
-%br
-= form.text_field :email
-%br
-= form.label :first_name
-%br
-= form.text_field :first_name
-%br
-= form.label :last_name
-%br
-= form.text_field :last_name
-%br
-= form.label :phone
-%br
-= form.text_field :phone
-%br
-= form.label :avatar
-%br
-= form.file_field :avatar
-%br
+
+%label
+  %span Email:
+  = form.text_field :email
+%label
+  %span First name:
+  = form.text_field :first_name
+%label
+  %span Last name:
+  = form.text_field :last_name
+%label
+  %span Phone:
+  = form.text_field :phone
+%label
+  %span Avatar:
+  = form.file_field :avatar
 - if current_user && current_user.is_admin?
-  %br
-  = form.label :role
-  %br
-  = form.select (:role, User.ROLES)
-  %br
-%br
-= form.label :password, form.object.new_record? ? nil : "Change password"
-%br
-= form.password_field :password
-%br
-%br
-= form.label :password_confirmation 
-%br
-= form.password_field :password_confirmation
-%br
+  %label
+    %span Role:
+    = form.select (:role, User.ROLES)
+%label
+  %span Password:
+  = form.password_field :password
+%label
+  %span Confirm:
+  = form.password_field :password_confirmation

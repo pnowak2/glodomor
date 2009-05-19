@@ -1,14 +1,16 @@
 %div.box
-  %h1 Edit Account
+  %h2 Edit Account
 
   - form_for @user, :html => { :multipart => true } do |f|
     = f.error_messages
     = render :partial => "form", :object => f
-    = f.submit "update"
+    %div.spacer
+      = f.submit "update"
     
 %br
 =link_to "My Profile", user_path(@user)     
-- content_for :subheader do
+
+- content_for :subheader do
   %b User edit
   %br
   This page allows you to edit the user account

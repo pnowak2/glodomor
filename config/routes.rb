@@ -4,9 +4,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :messages
 
   map.root :controller => "store", :action => "home"
-  map.resources :users, :product_categories, :products
-  map.resources :orders, :has_many => :comments
+  map.resources :users, :product_categories, :orders
+  map.resources :products, :has_many => [:comments, :rates]
   map.resource :user_session
+  map.resources :rates
   
   map.my_profile 'my_profile', :controller => 'users', :action => 'my_profile'
   map.logout 'logout', :controller => "user_sessions", :action => "destroy" 

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090517085124) do
+ActiveRecord::Schema.define(:version => 20090519092537) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -64,6 +64,15 @@ ActiveRecord::Schema.define(:version => 20090517085124) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.integer  "inventory"
+  end
+
+  create_table "rates", :force => true do |t|
+    t.integer  "rating",        :default => 0, :null => false
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   belongs_to :product_category
   has_many :line_items
+  has_many :rates, :as => :rateable
   has_many :comments, :as => :commentable
   has_attached_file :photo, :styles => { :medium => "80x80#", :thumb => "40x40#" }
     
@@ -26,7 +27,17 @@ class Product < ActiveRecord::Base
   def available?(quantity=nil)
     self.published? && (self.inventory == nil || self.inventory > 0) && ((quantity && self.inventory) ? self.inventory >= quantity : true)
   end
-    def to_s
+  
+  def rating_avg
+    size = self.rates.count
+    if(size > 0)
+      return (self.rates.map(&:rating).sum.to_f / size)
+    else
+      return 0
+    end
+  end
+  
+  def to_s
     self.name
   end
 end
