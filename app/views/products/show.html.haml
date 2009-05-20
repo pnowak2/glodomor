@@ -46,7 +46,7 @@
   = f.submit "Add comment"
 
 %h2#rates
-  ="Rates"
+  ="Rates (#{@product.rates.count})"
 
 - form_for(Rate.new) do |f|
   = hidden_field_tag :product_id, @product.id
