@@ -1,14 +1,13 @@
 %div.box
-
   %h2 Message
-  %p
-    %b Title:
-    = @message.title
-    
-  %p
-    %b Content:
-    = @message.content
+  %p.description Lorem ipsum dolor sit amet
+  
+  %p.label Title:
+  %p.value= @message.title
+  
+  %p.label Content:
+  %p.value= @message.content
 
-= link_to 'Edit', edit_message_path(@message) 
-|
-= link_to 'Back', messages_path
+  = link_to 'Edit', edit_message_path(@message) 
+  |
+  = link_to 'Back', messages_path
