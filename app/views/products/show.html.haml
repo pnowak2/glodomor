@@ -1,4 +1,12 @@
 %div.box
+  .links
+    %span.basket
+      = link_to 'Back to store', store_path
+    %span.back
+      = link_to 'Back', products_path
+    %span.show
+      = link_to 'Edit', edit_product_path(@product)
+
   %h2 Product 
   %p.description Lorem ipsum dolor est sit amet
   
@@ -26,8 +34,6 @@
 
   %div.spacer
     =button_to "Add to cart", :controller => "store", :action => "add_to_cart", :id => @product
-    or
-    =link_to "Back to store", store_path
     
 %h2#comments 
   ="Comments (#{@product.comments.size})"
@@ -57,12 +63,7 @@
 
   %br
   = f.submit "Add rate"
-
-= link_to 'Edit', edit_product_path(@product)
-|
-= link_to 'Back', products_path
-
-- content_for :subheader do
+- content_for :subheader do
   %b Product details
   %br
   This page allows you to read more about the product 

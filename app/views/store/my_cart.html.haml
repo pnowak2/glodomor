@@ -1,5 +1,10 @@
 %div.box
-  %h1 My cart
+  .links
+    %span.basket
+      =link_to "Continue to checkout", :action => :checkout_confirm
+      
+  %h2 My cart
+  %p.description Lorem ipsum dolor sit amet
 
   - form_tag('/store/update_cart', :method => :post) do
     %table
@@ -27,7 +32,6 @@
     or
 
   =button_to "Empty cart", :controller => 'store', :action => 'empty_cart' unless @cart.is_empty?
-  =link_to "Continue to checkout", :action => :checkout_confirm
 
 - content_for :subheader do
   %b My cart

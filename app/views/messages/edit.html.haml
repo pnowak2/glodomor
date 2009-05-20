@@ -1,4 +1,10 @@
 .box 
+  .links
+    %span.back
+      = link_to 'Back', messages_path
+    %span.show
+      = link_to 'Show', @message
+      
   %h2 Edit message
   %p.description Lorem ipsum dolor sit amet
   
@@ -8,5 +14,3 @@
     .spacer
       = f.submit "Update"
 
-  = link_to 'Back', messages_path
-  = link_to 'Show', @message

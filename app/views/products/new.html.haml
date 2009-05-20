@@ -1,5 +1,10 @@
 %div.box
+  .links
+    %span.back
+      = link_to 'Back', products_path
+      
   %h2 New product
+  %p.description Lorem ipsum dolor sit amet
 
   - form_for @product, :html => { :multipart => true } do |f|
     = f.error_messages
@@ -7,7 +12,6 @@
     %div.spacer
       = f.submit "Create"
 
-  = link_to 'Back', products_path
 - content_for :subheader do
   %b New product 
   %br

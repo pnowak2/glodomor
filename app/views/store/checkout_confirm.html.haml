@@ -1,4 +1,8 @@
 %div.box
+  .links
+    %span.back
+      =link_to "Back to my cart", my_cart_path
+      
   %h2 Confirm checkout
   %p.description Lorem ipsum dolor sit amet
 
@@ -14,8 +18,6 @@
 
     %div.spacer
       =f.submit 'checkout'
-      or
-      =link_to "Back to my cart", my_cart_path
 
 - content_for :subheader do
   %b Checkout confirm

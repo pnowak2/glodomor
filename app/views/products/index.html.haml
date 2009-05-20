@@ -1,5 +1,9 @@
 %div.box
+  .links
+    %span.add
+      = link_to 'New product', new_product_path
   %h2 Listing products
+  %p.description Lorem ipsum dolor sit amet    
 
   %table
     %tr
@@ -18,12 +22,7 @@
         %td= product.published ? 'yes' : 'no'
         %td= image_tag product.picture(:thumb)
         %td= link_to 'Edit', edit_product_path(product) 
-        %td= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete 
-
-  %br
-
-= link_to 'New product', new_product_path
-
+        %td= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete 
 - content_for :subheader do
   %b Products
   %br

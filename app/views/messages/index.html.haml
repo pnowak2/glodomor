@@ -1,6 +1,11 @@
 .box
-  %h1
-    Listing messages
+  .links
+    %span.add
+      = link_to 'New message', new_message_path
+      
+  %h2 Listing messages
+  %p.description Lorem ipsum dolor sit amet
+  
   %table
     %tr
       %th
@@ -20,5 +25,4 @@
         %td
           = link_to 'Destroy', message, :confirm => 'Are you sure?', :method => :delete
 
-  %br
-  = link_to 'New message', new_message_path
+  
