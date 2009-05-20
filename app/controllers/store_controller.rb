@@ -85,15 +85,15 @@ class StoreController < ApplicationController
     @order.add_line_items_from_cart(@cart)
     @order.user = current_user if current_user
     
-    @cart.items.each do |i|
-      p = Product.find(i.product_id)
-      if(p.inventory && p.inventory > 0)
-        p.inventory-=i.quantity
-        p.save!
-      end
-    end
-
     if(@order.save)
+      @cart.items.each do |i|
+        p = Product.find(i.product_id)
+        if(p.inventory && p.inventory > 0)
+          p.inventory-=i.quantity
+          p.save!
+        end
+      end
+    
       flash[:notice] = "Your order have been completed"
       session[:cart] = nil
       redirect_to my_orders_path
