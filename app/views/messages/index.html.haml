@@ -1,0 +1,24 @@
+.box
+  %h1
+    Listing messages
+  %table
+    %tr
+      %th
+        Title
+      %th
+        Content
+    - @messages.each do |message|
+      %tr
+        %td
+          = h message.title
+        %td
+          = h message.content
+        %td
+          = link_to 'Show', message
+        %td
+          = link_to 'Edit', edit_message_path(message)
+        %td
+          = link_to 'Destroy', message, :confirm => 'Are you sure?', :method => :delete
+
+  %br
+  = link_to 'New message', new_message_path

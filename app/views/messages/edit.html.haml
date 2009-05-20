@@ -1,0 +1,12 @@
+.box 
+  %h2 Edit message
+  %p.description Lorem ipsum dolor sit amet
+  
+  - form_for(@message) do |f|
+    = f.error_messages
+    = render :partial => 'form', :object => f
+    .spacer
+      = f.submit "Update"
+
+  = link_to 'Back', messages_path
+  = link_to 'Show', @message
