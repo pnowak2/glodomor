@@ -8,10 +8,10 @@
     = yield :javascript
     = stylesheet_link_tag 'style'
   %body
-    %div.content
-      %div.header
-        %div.top_info
-          %div.top_info_right
+    .content
+      .header
+        .top_info
+          .top_info_right
             - unless(current_user)
               %b You are not Logged in!
               Login to make orders.
@@ -19,7 +19,7 @@
               If you do not have an account, please
               =link_to "Register", new_user_path
             - else
-              %div.avatar_thumb
+              .avatar_thumb
                 =image_tag current_user.picture(:thumb)
               Welcome
               %b= link_to current_user.first_name, current_user
@@ -28,7 +28,7 @@
               You can
               =link_to "logout", logout_path
               if You want.
-          %div.top_info_left
+          .top_info_left
             =image_tag '/images/calendar_icon.jpg', :class=> 'today_info_image'
             Today is:
             %b=  Time.now.strftime("%d-%m-%Y")
@@ -36,13 +36,13 @@
             Check todays
             =link_to "News", messages_path
             for latest items
-        %div.logo
+        .logo
           %h1
             =link_to "Głodomor", store_path
             %span 2.0
-          %div.company_motto Bufet "Acha" w technoparku
+          .company_motto Bufet "Acha" w technoparku
 
-      %div.bar
+      .bar
         %ul
           %li= link_to "Home", home_path
           %li= link_to "Store", store_path
@@ -64,33 +64,33 @@
           - else
             %li= link_to "Register", new_user_path
               
-      %div.search_field
+      .search_field
         - form_tag(search_path) do
           %p
             =text_field_tag :phrase, params[:phrase], :class => 'search'
             =submit_tag "Search", :class=>'searchButton'
 
       - if @content_for_subheader
-        %div.left_message
+        .left_message
           %p
             =yield :subheader
 
       - if(flash[:notice])
-        %div.notify= flash[:notice]
+        .notify= flash[:notice]
       
-      %div.left
+      .left
           
         =yield
 
-      %div.right
+      .right
         - unless @cart.is_empty?
-          %div.cart= render :partial => 'cart/cart', :object => @cart 
+          .cart= render :partial => 'cart/cart', :object => @cart 
         
         - unless @controller.controller_name == UserSessionsController.controller_name || current_user
-          %div.right_login
+          .right_login
             =render :partial => 'user_sessions/login', :locals => {:user_session => @user_session || UserSession.new}
 
-        %div.right_articles
+        .right_articles
           %p
             %img.image{:src=>'images/image.gif', :alt=>'Image', :title=>'Image'}
             %b Lorem ipsum dolor sit amet
@@ -99,7 +99,7 @@
             %a{:href=>'#'} erat volutpat
             \. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
 
-        %div.right_articles
+        .right_articles
           %p
             %img.image{:src=>'images/image.gif', :alt=>'Image', :title=>'Image'}
             %b Lorem ipsum dolor sit amet
@@ -108,7 +108,7 @@
             %a{:href=>'#'} erat volutpat
             \. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
 
-        %div.right_articles
+        .right_articles
           %p
             %img.image{:src=>'images/image.gif', :alt=>'Image', :title=>'Image'}
             %b Lorem ipsum dolor sit amet
@@ -117,7 +117,7 @@
             %a{:href=>'#'} erat volutpat
             \. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
 
-  %div#footer
+  #footer
     %p
       %a{:href=>'#'} RSS Feed
       |

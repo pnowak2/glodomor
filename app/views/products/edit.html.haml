@@ -1,10 +1,10 @@
-%div.box
+.box
   %h2 Editing product
 
   - form_for @product, :html => { :multipart => true } do |f|
     = f.error_messages
     = render :partial => "form", :object => f
-    %div.spacer
+    .spacer
       = f.submit "update"
       
   %br
