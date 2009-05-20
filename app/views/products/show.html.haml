@@ -15,7 +15,7 @@
   %p.value= h @product.price
 
   %p.label Inventory:
-  %p.value= h @product.inventory ? @product.inventory : 'unlimited'
+  %p.value= h @product.inventory || 'unlimited'
 
   %p.label Available:
   %p.value= h @product.available? ? 'yes' : 'no'
