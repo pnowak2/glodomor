@@ -1,5 +1,10 @@
 .box 
+  .links
+    %span.link
+      = link_to 'Back', messages_path
+    
   %h2 New message
+  
   %p.description Lorem ipsum dolor sit amet
   
   - form_for(@message) do |f|
@@ -8,4 +13,5 @@
     .spacer
       = f.submit "Create"
 
-  = link_to 'Back', messages_path
+
+

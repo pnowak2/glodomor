@@ -1,4 +1,10 @@
 .box
+  .links
+    %span.link
+      = link_to 'Show', messages_path
+    %span.link
+      = link_to 'Back', messages_path
+      
   %h2 Editing product
 
   - form_for @product, :html => { :multipart => true } do |f|
@@ -6,12 +12,7 @@
     = render :partial => "form", :object => f
     .spacer
       = f.submit "update"
-      
-  %br
 
-= link_to 'Show', @product
-|
-= link_to 'Back', products_path 
 - content_for :subheader do
   %b Product edit
   %br

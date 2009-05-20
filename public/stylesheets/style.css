@@ -507,6 +507,17 @@ p.label, p.value {
     margin-bottom: 10px;
 }
 
+span.link {
+  border: 0;
+  padding-left: 20px;
+  padding-bottom: 2px;
+  background: url(../images/comment-icon.gif) no-repeat left center;
+}
+
+div.links {
+  float: right;
+}
+
 /* jQuery.Rating Plugin CSS - http://www.fyneworks.com/jquery/star-rating/ */
 div.rating-cancel,div.star-rating{float:left;width:17px;height:15px;text-indent:-999em;cursor:pointer;display:block;background:transparent;overflow:hidden}
 div.rating-cancel,div.rating-cancel a{background:url(../images/delete.gif) no-repeat 0 -16px}
