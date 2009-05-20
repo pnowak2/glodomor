@@ -1,38 +1,23 @@
 %div.box
-  %h1 Checkout
+  %h2 Confirm checkout
+  %p.description Lorem ipsum dolor sit amet
 
-  - form_tag('/store/update_cart', :method => :post) do
-    %table
-      %tr
-        %th Name
-        %th Quantity
-        %th Price
-        %th Delete
-        - @cart.items.each do |i|
-          %tr
-            %td= i.title
-            %td
-              =text_field_tag "cart_item[#{i.product_id}][quantity]", i.quantity
-            %td= number_to_currency(i.price)
-            %td=check_box_tag "cart_item[#{i.product_id}][deleted]"
-        %tr
-          %td
-            %b Total:  
-          %td
-            %b= @cart.total_quantity
-          %td
-            %b= number_to_currency(@cart.total_price)
-            
-    =submit_tag t(:update), :name=>'submit' unless @cart.is_empty?
-    or
+  - form_for @order, :url => '/store/checkout' do |f|
+    = f.error_messages
+    = hidden_field_tag :return_to, request.request_uri
+    %label
+      %span Order time
+      =f.text_field :order_time
+    %label
+      %span Notes
+      =f.text_area :note, :rows => 3
 
-  =button_to "Empty cart", :controller => 'store', :action => 'empty_cart' unless @cart.is_empty?
-
-- unless @cart.is_empty?
-  %div.box
-    = render :partial => 'checkout', :locals => { :order => @order } 
+    %div.spacer
+      =f.submit 'checkout'
+      or
+      =link_to "Back to my cart", my_cart_path
 
 - content_for :subheader do
-  %b Checkout
+  %b Checkout confirm
   %br
   This page allows you to make an order

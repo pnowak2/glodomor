@@ -20,7 +20,7 @@
   = form.text_area :description, :rows => 2
 %label
   %span Category:
-  = form.select ("product_category_id", @product_categories.map {|u| [u.name,u.id]})
+  = form.collection_select ("product_category_id", @product_categories, :id, :name, :include_blank => '- Choose -')
 %label
   %span Photo:
   = form.file_field :photo

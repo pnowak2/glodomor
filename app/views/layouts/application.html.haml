@@ -1,7 +1,7 @@
 !!!
 %html{ :xmlns => "http://www.w3.org/1999/xhtml", :lang => "en", 'xml:lang' => "en" }
   %head
-    %title Bufet "Acha"
+    %title Głodomor 2.0
     %meta{ 'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8' }
     = javascript_include_tag 'jquery-1.3.2.min', 'application', :cache => true
     = javascript_include_tag 'jquery.rating.pack', 'application', :cache => true
@@ -38,15 +38,16 @@
             for latest items
         %div.logo
           %h1
-            =link_to "Bufet \"Acha\"", store_path
-          %div.company_motto Bufet w Technoparku
+            =link_to "Głodomor", store_path
+            %span 2.0
+          %div.company_motto Bufet "Acha" w technoparku
 
       %div.bar
         %ul
           %li= link_to "Home", home_path
           %li= link_to "Store", store_path
           %li
-            =link_to "My cart", :controller => 'store', :action => 'checkout_confirm'
+            =link_to "My cart", :controller => 'store', :action => 'my_cart'
             ="(#{@cart.total_quantity})"
           - if current_user
             %li= link_to "My orders", my_orders_path     

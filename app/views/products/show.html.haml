@@ -5,34 +5,29 @@
   %div.item_image
     = link_to(image_tag(@product.picture(:medium)), @product.picture)
   
-  %label
-    %span Name:
-    =h @product.name
+  %p.label Name:
+  %p.value= h @product.name
 
-  %label
-    %span Description:
-    =h @product.description 
+  %p.label Description:
+  %p.value= h @product.description
      
-  %label
-    %span Price:
-    =h @product.price
+  %p.label Price:
+  %p.value= h @product.price
 
-  %label
-    %span Inventory:
-    =h @product.inventory ? @product.inventory : 'unlimited'
+  %p.label Inventory:
+  %p.value= h @product.inventory ? @product.inventory : 'unlimited'
 
-  %label
-    %span Available:
-    =h @product.available? ? 'yes' : 'no'
+  %p.label Available:
+  %p.value= h @product.available? ? 'yes' : 'no'
 
-  %label
-    %span Category:
-    = link_to @product.product_category, @product.product_category
+  %p.label Category:
+  %p.value= link_to @product.product_category, @product.product_category
     
 
-  =button_to "Add to cart", :controller => "store", :action => "add_to_cart", :id => @product
-  or
-  =link_to "Back to store", store_path
+  %div.spacer
+    =button_to "Add to cart", :controller => "store", :action => "add_to_cart", :id => @product
+    or
+    =link_to "Back to store", store_path
     
 %h2#comments 
   ="Comments (#{@product.comments.size})"

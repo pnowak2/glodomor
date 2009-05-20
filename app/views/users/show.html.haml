@@ -1,41 +1,37 @@
 %div.box
+  %h2 Show user
+  %p.description Lorem ipsum dolor sit amet
   %div.item_image
     = link_to(image_tag(@user.picture(:medium)), @user.picture)
-  %p
-    %b Name:
-    =h "#{@user.first_name} #{@user.last_name}"
-  %p
-    %b Phone:
-    =h @user.phone
-  %p
-    %b Email:
-    =h @user.email 
-  %p
-    %b Role:
-    =h @user.role
-  %p
-    %b Login count:
-    =h @user.login_count 
+  %p.label Name:
+  %p.value= h "#{@user.first_name} #{@user.last_name}"
+  
+  %p.label Phone:
+  %p.value= h @user.phone
+  
+  %p.label Email:
+  %p.value= h @user.email
+  
+  %p.label Role:
+  %p.value= h @user.role || "-"
+  
+  %p.label Login count:
+  %p.value= h @user.login_count || "-"
      
-  %p
-    %b Last request at:
-    =h @user.last_request_at
+  %p.label Last request at:
+  %p.value= h @user.last_request_at || "-"
 
-  %p
-    %b Last login at:
-    =h @user.last_login_at
+  %p.label Last login at:
+  %p.value= h @user.last_login_at || "-"
 
-  %p
-    %b Current login at:
-    =h @user.current_login_at
+  %p.label Current login at:
+  %p.value= h @user.current_login_at || "-"
 
-  %p
-    %b Last login ip:
-    =h @user.last_login_ip
+  %p.label Last login ip:
+  %p.value= h @user.last_login_ip || "-"
 
-  %p
-    %b Current login ip:
-    =h @user.current_login_ip
+  %p.label Current login ip:
+  %p.value= h @user.current_login_ip || "-"
    
   = link_to 'Edit', edit_user_path(@user)
 - content_for :subheader do

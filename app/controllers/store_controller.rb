@@ -1,6 +1,5 @@
 class StoreController < ApplicationController
-  verify :method => :post, :only => [:add_to_cart, :empty_cart, :update_cart_quantities, :checkout]
-  verify :method => :delete, :only => [:remove_from_cart]
+  verify :method => :post, :only => [:add_to_cart, :empty_cart, :checkout]
 
   before_filter :validate_checkout, :only => [:checkout]
   before_filter :require_user, :only => [:checkout]
@@ -24,9 +23,15 @@ class StoreController < ApplicationController
                                                 ], :order => 'name')
   end
 
-  def checkout_confirm
-    @order = Order.new
+  def my_cart
     flash[:notice] = "Your cart is empty" if @cart.is_empty?
+  end
+
+  def checkout_confirm
+    if(find_cart.is_empty?)
+      redirect_to my_cart_path
+    end
+    @order = Order.new
   end
     
   def add_to_cart
@@ -40,7 +45,7 @@ class StoreController < ApplicationController
       if product.available?
         @cart.add_product(product) 
         flash[:notice] = "Your cart has been updated with #{product}"
-        redirect_to checkout_confirm_path
+        redirect_to my_cart_path
       else
         flash[:notice] = "This item is no longer available. Please try again later."
         redirect_to product_path(product)
@@ -51,7 +56,7 @@ class StoreController < ApplicationController
   def empty_cart
     session[:cart] = nil
     flash[:notice] = "Your cart is empty now"
-    redirect_to :action => :checkout_confirm
+    redirect_to :action => :my_cart
   end
 
   def update_cart
@@ -70,7 +75,7 @@ class StoreController < ApplicationController
     end if items
 
     flash[:notice] = "Your cart has been updated"
-    render :action => 'checkout_confirm'
+    render :action => 'my_cart'
   end
 
   def checkout
@@ -119,7 +124,7 @@ class StoreController < ApplicationController
     
     unless unavailable_products.empty?
       flash[:notice] = "These items are no longer available:<br/> #{unavailable_products.join('<br/> ')}"
-      redirect_to checkout_confirm_path 
+      redirect_to my_cart_path 
     end  
   end
 

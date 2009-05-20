@@ -255,6 +255,10 @@ img.today_info_image {
   border-bottom: 1px solid #9EC068;
 }
 
+div.logo span {
+    color: #9EC068;
+}
+
 .company_motto {
   padding-left: 2px;
 	color: #246088;
@@ -474,16 +478,33 @@ div.box label span{
 	display:block;
 	float:left;
 	padding: 0px 6px 0 0;
-	width:110px;
+	width:130px;
 	text-align:left;
 	font-weight:bold;
   color: #888;
 }
 .spacer{
-  margin-left:115px; 
+  margin-left:130px;
 	margin-bottom:10px;
 	font-size:11px;
 	color:#555555;
+}
+
+p.label {
+    width: 130px;
+    float: left;
+	color: #888;
+    font-weight:bold;
+}
+
+p.value {
+    margin-left: 130px;
+    color: #aaa;
+}
+
+p.label, p.value {
+    font-size: 1.3em;
+    margin-bottom: 10px;
 }
 
 /* jQuery.Rating Plugin CSS - http://www.fyneworks.com/jquery/star-rating/ */
