@@ -38,18 +38,19 @@ class StoreController < ApplicationController
     begin
       basket = params[:basket]
       product = Product.find(basket[:product_id])
+      property = Property.find(basket[:property_id]) unless basket[:property_id]
     rescue ActiveRecord::RecordNotFound
       logger.error("Attempt to access invalid product #{params[:id]}")
-      flash[:notice] = "This product does not exist anymore"
+      flash[:notice] = "This product or property does not exist anymore"
       redirect_to store_path
     else
       @cart = find_cart
-      if product.available?
-        @cart.add_product(product) 
+      if product.available?(basket[:quantity].to_i)
+        @cart.add_product(product, property, basket[:quantity].to_i) 
         flash[:notice] = "Your cart has been updated with #{product}"
         redirect_to my_cart_path
       else
-        flash[:notice] = "This item is no longer available. Please try again later."
+        flash[:notice] = "Too many items requested or item not available."
         redirect_to product_path(product)
       end
     end

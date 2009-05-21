@@ -5,12 +5,12 @@ class Cart
     @items = []
   end
 
-  def add_product(product)
+  def add_product(product, property, quantity)
     item = @items.find {|i| i.product_id == product.id}
     if(item)
-      item.increment_quantity
+      item.increment_quantity(quantity)
     else
-      @items << CartItem.new(product.id, product.name, product.price)
+      @items << CartItem.new(product.id, product.name, product.price, quantity) if quantity > 0
     end
   end
   
