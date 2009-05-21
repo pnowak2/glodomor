@@ -5,24 +5,32 @@ class Cart
     @items = []
   end
 
-  def add_product(product, property, quantity)
-    item = @items.find {|i| i.product_id == product.id}
-    if(item)
-      item.increment_quantity(quantity)
-    else
-      @items << CartItem.new(product.id, product.name, product.price, quantity) if quantity > 0
+  def add_product(request)
+    product = Product.find(request[:product_id])
+    property = Property.find_by_id(request[:property_id])
+    item = self[product.id]
+    
+    unless(product.published?)
+      raise Exceptions::CartException.new("This item is not available now (#{product})")
     end
-  end
-  
-  def remove_product(product_id)
-    item = @items.find {|i| i.product_id == product_id}
+    
+    in_basket = (item && request[:mode] != 'update') ? item.quantity : 0
+    unless(product.available?(in_basket + request[:quantity].to_i) )
+      raise Exceptions::CartException.new("You can't get more items than in stock for #{product} (#{product.inventory}) - #{request[:quantity]}")
+    end
+    
+    unless(request[:quantity].to_i > 0)
+      raise Exceptions::CartException.new("You have to get one or more items for (#{product})")
+    end
+
     if(item)
-      if(item.quantity>1)
-        item.decrement_quantity
+      if(request[:mode] == 'update')
+         item.quantity = request[:quantity].to_i
       else
-        @items.delete(item)
+         item.increment_quantity(request[:quantity].to_i)
       end
-      
+    else
+      @items << CartItem.new(product.id, product.name, product.price, request[:quantity].to_i)
     end
   end
 

@@ -36,23 +36,15 @@ class StoreController < ApplicationController
     
   def add_to_cart
     begin
-      basket = params[:basket]
-      product = Product.find(basket[:product_id])
-      property = Property.find(basket[:property_id]) unless basket[:property_id]
+      find_cart.add_product(params[:basket]) 
+      flash[:notice] = "Your cart has been updated"
+      redirect_to my_cart_path
     rescue ActiveRecord::RecordNotFound
-      logger.error("Attempt to access invalid product #{params[:id]}")
-      flash[:notice] = "This product or property does not exist anymore"
+      flash[:notice] = "This product does not exist anymore"
       redirect_to store_path
-    else
-      @cart = find_cart
-      if product.available?(basket[:quantity].to_i)
-        @cart.add_product(product, property, basket[:quantity].to_i) 
-        flash[:notice] = "Your cart has been updated with #{product}"
-        redirect_to my_cart_path
-      else
-        flash[:notice] = "Too many items requested or item not available."
-        redirect_to product_path(product)
-      end
+    rescue Exceptions::CartException => e
+      flash[:notice] = e.msg
+      redirect_to product_path(params[:id])
     end
   end
 
@@ -63,22 +55,20 @@ class StoreController < ApplicationController
   end
 
   def update_cart
-    items = params[:cart_item]
-    @order = Order.new
-    @cart = find_cart
-    items.each do |k, v|
-      item = @cart[k.to_i]
-      if(item)
-        if(items[k][:quantity].to_i<=0 || items[k][:deleted])
-          @cart.items.delete(item)
-        else
-          item.quantity = items[k][:quantity].to_i
-        end
-      end
-    end if items
-
-    flash[:notice] = "Your cart has been updated"
-    render :action => 'my_cart'
+    items = params[:basket]
+    
+    begin
+      items.each do |k, v|
+        find_cart.add_product(items[k])
+      end if items
+      redirect_to :action => :my_cart
+    rescue ActiveRecord::RecordNotFound
+      flash[:notice] = "This product does not exist anymore"
+      render :action => 'my_cart'
+    rescue Exceptions::CartException => e
+      flash[:notice] = e.msg
+      render :action => 'my_cart'
+    end
   end
 
   def checkout

@@ -17,9 +17,12 @@
           %tr
             %td= i.title
             %td
-              =text_field_tag "cart_item[#{i.product_id}][quantity]", i.quantity
+              =text_field_tag "basket[#{i.product_id}][quantity]", i.quantity
             %td= number_to_currency(i.price)
-            %td=check_box_tag "cart_item[#{i.product_id}][deleted]"
+            %td
+              =check_box_tag "basket[#{i.product_id}][deleted]"
+              =hidden_field_tag "basket[#{i.product_id}][mode]", "update"
+              =hidden_field_tag "basket[#{i.product_id}][product_id]", i.product_id
         %tr
           %td
             %b Total:  

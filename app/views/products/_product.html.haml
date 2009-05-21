@@ -16,8 +16,8 @@
 %p.label Inventory:
 %p.value= h product.inventory || 'unlimited'
 
-%p.label Available:
-%p.value= h product.available? ? 'yes' : 'no'
+%p.label Published:
+%p.value= h product.published? ? 'yes' : 'no'
 
 %p.label Category:
 %p.value= link_to product.product_category, product.product_category
