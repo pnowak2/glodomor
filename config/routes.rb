@@ -15,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
   map.logout 'logout', :controller => "user_sessions", :action => "destroy" 
   map.login 'login', :controller => "user_sessions", :action => "new"
   map.store 'store', :controller => "store", :action => "index"
+  map.add_to_cart 'add_to_cart/:id', :controller => "store", :action => "add_to_cart"
   map.home 'home', :controller => "store", :action => "home"
   map.search 'search', :controller => "store", :action => "search"
   map.my_cart 'my_cart', :controller => "store", :action => "my_cart"

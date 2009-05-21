@@ -1,20 +1,21 @@
-%div.box
-  .links
-    %span.basket
-      = link_to 'Back to store', store_path
-    %span.back
-      = link_to 'Back', products_path
-    %span.show
-      = link_to 'Edit', edit_product_path(@product)
-  
-  =render :partial => 'product', :object => @product
-
-  %p.label Property:
-  %p.value= select("product_property", "id", @product.properties.map {|p| [p.name + " (#{number_to_currency(p.price)})", p.id]}, :include_blank => '- Choose -')
-
+- form_tag(add_to_cart_path(@product)) do
+  %div.box
+    .links
+      %span.basket
+        = link_to 'Back to store', store_path
+      %span.back
+        = link_to 'Back', products_path
+      %span.show
+        = link_to 'Edit', edit_product_path(@product)
     
-  %div.spacer
-    =button_to "Add to cart", :controller => "store", :action => "add_to_cart", :id => @product
+    =render :partial => 'product', :object => @product
+
+    %p.label Property:
+    %p.value= select("product_property", "id", @product.properties.map {|p| [p.name + " (#{number_to_currency(p.price)})", p.id]}, :include_blank => '- Choose -')
+
+      
+    %div.spacer
+      =submit_tag "Add to cart"
 
 %h2#comments 
   ="Comments (#{@product.comments.size})"
