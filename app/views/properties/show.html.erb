@@ -1,0 +1,19 @@
+
+<p>
+  <b>Name:</b>
+  <%=h @property.name %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%=h @property.price %>
+</p>
+
+<p>
+  <b>Product:</b>
+  <%=h @property.product_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_product_property_path(@property.product, @property) %> |
+<%= link_to 'Back', product_properties_path(@property.product) %>

@@ -1,0 +1,20 @@
+<h1>Editing property</h1>
+
+<% form_for(@property) do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field :product_id %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', product_property_path(@property.product, @property) %> |
+<%= link_to 'Back', properties_path %>

@@ -1,11 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :properties
+
   map.resources :comments
 
   map.resources :messages
 
   map.root :controller => "store", :action => "home"
   map.resources :users, :product_categories, :orders
-  map.resources :products, :has_many => [:comments, :rates]
+  map.resources :products, :has_many => [:comments, :rates, :properties]
   map.resource :user_session
   map.resources :rates
   
