@@ -6,30 +6,8 @@
       = link_to 'Back', products_path
     %span.show
       = link_to 'Edit', edit_product_path(@product)
-
-  %h2 Product 
-  %p.description Lorem ipsum dolor est sit amet
   
-  %div.item_image
-    = link_to(image_tag(@product.picture(:medium)), @product.picture)
-  
-  %p.label Name:
-  %p.value= h @product.name
-
-  %p.label Description:
-  %p.value= h @product.description
-     
-  %p.label Price:
-  %p.value= h number_to_currency(@product.price)
-
-  %p.label Inventory:
-  %p.value= h @product.inventory || 'unlimited'
-
-  %p.label Available:
-  %p.value= h @product.available? ? 'yes' : 'no'
-
-  %p.label Category:
-  %p.value= link_to @product.product_category, @product.product_category
+  =render :partial => 'product', :object => @product
 
   %p.label Property:
   %p.value= select("product_property", "id", @product.properties.map {|p| [p.name + " (#{number_to_currency(p.price)})", p.id]}, :include_blank => '- Choose -')

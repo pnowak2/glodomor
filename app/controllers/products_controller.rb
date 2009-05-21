@@ -50,7 +50,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.save
         flash[:notice] = 'Product was successfully created.'
-        format.html { redirect_to(@product) }
+        format.html { redirect_to(edit_product_path(@product)) }
         format.xml  { render :xml => @product, :status => :created, :location => @product }
       else
         @product_categories = ProductCategory.find(:all)

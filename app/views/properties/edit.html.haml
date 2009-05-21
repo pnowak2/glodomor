@@ -1,0 +1,15 @@
+.box
+  .links
+    %span.back
+      =link_to 'Back', edit_product_path(@property.product)
+      
+  %h2 Edit property
+  %p.description Lorem ipsum dolor sit amet
+  
+  - form_for(@property) do |f|
+    = f.error_messages
+    = render :partial => 'form', :object => f
+    .spacer
+      = f.submit 'Update'
+
+  = render :partial => 'products/product', :object => @product
