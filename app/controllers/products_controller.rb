@@ -53,6 +53,7 @@ class ProductsController < ApplicationController
         format.html { redirect_to(@product) }
         format.xml  { render :xml => @product, :status => :created, :location => @product }
       else
+        @product_categories = ProductCategory.find(:all)
         format.html { render :action => "new" }
         format.xml  { render :xml => @product.errors, :status => :unprocessable_entity }
       end
