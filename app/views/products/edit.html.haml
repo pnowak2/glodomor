@@ -15,16 +15,17 @@
 
   .links
     %span.add
-      = link_to 'Add property', new_product_property_path(@product)
-    %span
-      = link_to 'Manage properties', product_properties_path(@product)
+      = link_to 'Add property', new_product_property_path(@product)    
 
   %h2 Product properties
   %p.description Lorem ipsum dolor sit amet
 
   - @product.properties.each do |p|
     %p.label= p.name
-    %p.value= p.price
+    %p.value
+      = p.price
+      = link_to 'Edit', edit_product_property_path(@product, p)
+      = link_to 'Destroy', p, :confirm => 'Are you sure?', :method => :delete 
 
 - content_for :subheader do
   %b Product edit

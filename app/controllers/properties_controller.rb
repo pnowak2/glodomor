@@ -1,28 +1,5 @@
 class PropertiesController < ApplicationController
   before_filter :require_user_admin
-  
-  # GET /properties
-  # GET /properties.xml
-  def index
-    @product = Product.find(params[:product_id])
-    @properties = Property.find_all_by_product_id(@product)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @properties }
-    end
-  end
-
-  # GET /properties/1
-  # GET /properties/1.xml
-  def show
-    @property = Property.find(params[:id])
-    
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @property }
-    end
-  end
 
   # GET /properties/new
   # GET /properties/new.xml
@@ -50,7 +27,7 @@ class PropertiesController < ApplicationController
     respond_to do |format|
       if @property.save
         flash[:notice] = 'Property was successfully created.'
-        format.html { redirect_to(product_property_path(@property.product, @property)) }
+        format.html { redirect_to(edit_product_path(@property.product)) }
         format.xml  { render :xml => @property, :status => :created, :location => @property }
       else
         format.html { render :action => "new" }
@@ -67,7 +44,7 @@ class PropertiesController < ApplicationController
     respond_to do |format|
       if @property.update_attributes(params[:property])
         flash[:notice] = 'Property was successfully updated.'
-        format.html { redirect_to(product_property_path(@property.product, @property)) }
+        format.html { redirect_to(edit_product_path(@property.product)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -84,7 +61,7 @@ class PropertiesController < ApplicationController
     product = @property.product
 
     respond_to do |format|
-      format.html { redirect_to(product_properties_url(product)) }
+      format.html { redirect_to(edit_product_path(product)) }
       format.xml  { head :ok }
     end
   end
