@@ -5,7 +5,7 @@ class Cart
     @items = []
   end
 
-  def add_product(request)
+  def update_product(request, mode)
     product = Product.find(request[:product_id])
     property = Property.find_by_id(request[:property_id])
     item = self[product.id]
@@ -14,7 +14,7 @@ class Cart
       raise Exceptions::CartException.new("This item is not available now (#{product})")
     end
     
-    in_basket = (item && request[:mode] != 'update') ? item.quantity : 0
+    in_basket = (item && mode == :add) ? item.quantity : 0
     unless(product.available?(in_basket + request[:quantity].to_i) )
       raise Exceptions::CartException.new("You can't get more items than in stock for #{product} (#{product.inventory}) - #{request[:quantity]}")
     end
@@ -24,7 +24,7 @@ class Cart
     end
 
     if(item)
-      if(request[:mode] == 'update')
+      if(mode != :add)
          item.quantity = request[:quantity].to_i
       else
          item.increment_quantity(request[:quantity].to_i)

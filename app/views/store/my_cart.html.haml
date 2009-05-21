@@ -21,7 +21,6 @@
             %td= number_to_currency(i.price)
             %td
               =check_box_tag "basket[#{i.product_id}][deleted]"
-              =hidden_field_tag "basket[#{i.product_id}][mode]", "update"
               =hidden_field_tag "basket[#{i.product_id}][product_id]", i.product_id
         %tr
           %td

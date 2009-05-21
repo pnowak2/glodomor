@@ -36,7 +36,7 @@ class StoreController < ApplicationController
     
   def add_to_cart
     begin
-      find_cart.add_product(params[:basket]) 
+      find_cart.update_product(params[:basket], :add) 
       flash[:notice] = "Your cart has been updated"
       redirect_to my_cart_path
     rescue ActiveRecord::RecordNotFound
@@ -48,27 +48,28 @@ class StoreController < ApplicationController
     end
   end
 
-  def empty_cart
-    session[:cart] = nil
-    flash[:notice] = "Your cart is empty now"
-    redirect_to :action => :my_cart
-  end
-
   def update_cart
     items = params[:basket]
     
     begin
       items.each do |k, v|
-        find_cart.add_product(items[k])
+        find_cart.update_product(items[k], :update)
       end if items
+      flash[:notice] = "Your cart has been updated"
       redirect_to :action => :my_cart
     rescue ActiveRecord::RecordNotFound
       flash[:notice] = "This product does not exist anymore"
-      render :action => 'my_cart'
+      redirect_to my_cart_path
     rescue Exceptions::CartException => e
       flash[:notice] = e.msg
-      render :action => 'my_cart'
+      redirect_to my_cart_path
     end
+  end
+
+  def empty_cart
+    session[:cart] = nil
+    flash[:notice] = "Your cart is empty now"
+    redirect_to :action => :my_cart
   end
 
   def checkout
