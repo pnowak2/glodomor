@@ -40,7 +40,8 @@ class StoreController < ApplicationController
       product = Product.find(basket[:product_id])
     rescue ActiveRecord::RecordNotFound
       logger.error("Attempt to access invalid product #{params[:id]}")
-      flash[:notice] = "Invalid product"
+      flash[:notice] = "This product does not exist anymore"
+      redirect_to store_path
     else
       @cart = find_cart
       if product.available?
