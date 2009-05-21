@@ -1,4 +1,5 @@
 - form_tag(add_to_cart_path(@product)) do
+  = hidden_field_tag 'basket[product_id]', @product.id
   %div.box
     .links
       %span.basket
@@ -11,7 +12,9 @@
     =render :partial => 'product', :object => @product
 
     %p.label Property:
-    %p.value= select("product_property", "id", @product.properties.map {|p| [p.name + " (#{number_to_currency(p.price)})", p.id]}, :include_blank => '- Choose -')
+    %p.value= select("basket", "price", @product.properties.map {|p| [p.name + " (#{number_to_currency(p.price)})", p.id]}, :include_blank => '- Choose -')
+    %p.label Quantity:
+    %p.value= text_field_tag 'basket[quantity]'
 
       
     %div.spacer
